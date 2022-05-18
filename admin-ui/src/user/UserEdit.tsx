@@ -17,7 +17,7 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
     <Edit {...props}>
       <SimpleForm>
         <TextInput label="Email" source="email" type="email" />
-        <TextInput label="FirstName" source="firstName" />
+        <TextInput label="First Name" source="firstName" />
         <SelectInput
           source="gender"
           label="Gender"
@@ -30,7 +30,7 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
           allowEmpty
           optionValue="value"
         />
-        <TextInput label="LastName" source="lastName" />
+        <TextInput label="Last Name" source="lastName" />
         <PasswordInput label="Password" source="password" />
         <SelectArrayInput
           source="roles"
