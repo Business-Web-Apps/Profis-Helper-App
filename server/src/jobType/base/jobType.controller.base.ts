@@ -20,6 +20,7 @@ import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { JobTypeService } from "../jobType.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { JobTypeCreateInput } from "./JobTypeCreateInput";
 import { JobTypeWhereInput } from "./JobTypeWhereInput";
@@ -62,12 +63,7 @@ export class JobTypeControllerBase {
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "JobType",
-    action: "read",
-    possession: "any",
-  })
+  @Public()
   @common.Get()
   @swagger.ApiOkResponse({ type: [JobType] })
   @swagger.ApiForbiddenResponse()
@@ -88,12 +84,7 @@ export class JobTypeControllerBase {
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "JobType",
-    action: "read",
-    possession: "own",
-  })
+  @Public()
   @common.Get("/:id")
   @swagger.ApiOkResponse({ type: JobType })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })

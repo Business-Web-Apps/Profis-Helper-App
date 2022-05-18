@@ -19,6 +19,7 @@ import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { CreateJobArgs } from "./CreateJobArgs";
 import { UpdateJobArgs } from "./UpdateJobArgs";
 import { DeleteJobArgs } from "./DeleteJobArgs";
@@ -197,13 +198,8 @@ export class JobResolverBase {
     return results;
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => JobType, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "JobType",
-    action: "read",
-    possession: "any",
-  })
   async jobType(@graphql.Parent() parent: Job): Promise<JobType | null> {
     const result = await this.service.getJobType(parent.id);
 

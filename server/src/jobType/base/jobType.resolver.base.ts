@@ -17,8 +17,9 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { CreateJobTypeArgs } from "./CreateJobTypeArgs";
 import { UpdateJobTypeArgs } from "./UpdateJobTypeArgs";
 import { DeleteJobTypeArgs } from "./DeleteJobTypeArgs";
@@ -37,12 +38,8 @@ export class JobTypeResolverBase {
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
+  @Public()
   @graphql.Query(() => MetaQueryPayload)
-  @nestAccessControl.UseRoles({
-    resource: "JobType",
-    action: "read",
-    possession: "any",
-  })
   async _jobTypesMeta(
     @graphql.Args() args: JobTypeFindManyArgs
   ): Promise<MetaQueryPayload> {
@@ -56,26 +53,16 @@ export class JobTypeResolverBase {
     };
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => [JobType])
-  @nestAccessControl.UseRoles({
-    resource: "JobType",
-    action: "read",
-    possession: "any",
-  })
   async jobTypes(
     @graphql.Args() args: JobTypeFindManyArgs
   ): Promise<JobType[]> {
     return this.service.findMany(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => JobType, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "JobType",
-    action: "read",
-    possession: "own",
-  })
   async jobType(
     @graphql.Args() args: JobTypeFindUniqueArgs
   ): Promise<JobType | null> {
