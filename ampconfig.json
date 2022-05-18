@@ -1,0 +1,19 @@
+{
+  "dataServiceGeneratorVersion": "0.12.7",
+  "appInfo": {
+    "name": "ProfisHelper",
+    "description": "",
+    "version": "vdfnn3fh",
+    "id": "cl2ucm2wj40133501s698zu7s1v",
+    "url": "https://app.amplication.com/cl2ucm2wj40133501s698zu7s1v",
+    "settings": {
+      "dbHost": "localhost",
+      "dbName": "profis_helper",
+      "dbPassword": "Unmt80l.0_9082bn34",
+      "dbPort": 5432,
+      "dbUser": "sys_raa_ad",
+      "appId": "cl2ucm2wj40133501s698zu7s1v",
+      "authProvider": "Jwt"
+    }
+  }
+}
