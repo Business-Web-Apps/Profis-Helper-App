@@ -1,5 +1,6 @@
 import { JobReportCreateNestedManyWithoutJobsInput } from "./JobReportCreateNestedManyWithoutJobsInput";
 import { JobTypeWhereUniqueInput } from "../jobType/JobTypeWhereUniqueInput";
+import { PaymentCreateNestedManyWithoutJobsInput } from "./PaymentCreateNestedManyWithoutJobsInput";
 
 export type JobCreateInput = {
   currentStatus:
@@ -19,6 +20,7 @@ export type JobCreateInput = {
   jobType?: JobTypeWhereUniqueInput | null;
   numberOfHelper: number;
   paidAmount?: number | null;
+  payments?: PaymentCreateNestedManyWithoutJobsInput;
   pricePerHour: number;
   startDate: Date;
   title: string;

@@ -25,6 +25,10 @@ import { DeleteUserArgs } from "./DeleteUserArgs";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { User } from "./User";
+import { AddressFindManyArgs } from "../../address/base/AddressFindManyArgs";
+import { Address } from "../../address/base/Address";
+import { PaymentFindManyArgs } from "../../payment/base/PaymentFindManyArgs";
+import { Payment } from "../../payment/base/Payment";
 import { UserService } from "../user.service";
 
 @graphql.Resolver(() => User)
@@ -134,5 +138,45 @@ export class UserResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Address])
+  @nestAccessControl.UseRoles({
+    resource: "Address",
+    action: "read",
+    possession: "any",
+  })
+  async addresses(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: AddressFindManyArgs
+  ): Promise<Address[]> {
+    const results = await this.service.findAddresses(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Payment])
+  @nestAccessControl.UseRoles({
+    resource: "Payment",
+    action: "read",
+    possession: "any",
+  })
+  async payments(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: PaymentFindManyArgs
+  ): Promise<Payment[]> {
+    const results = await this.service.findPayments(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 }

@@ -11,13 +11,27 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { StringFilter } from "../../util/StringFilter";
+import { AddressListRelationFilter } from "../../address/base/AddressListRelationFilter";
+import { ValidateNested, IsOptional, IsEnum } from "class-validator";
 import { Type } from "class-transformer";
-import { IsOptional, IsEnum } from "class-validator";
+import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { EnumUserGender } from "./EnumUserGender";
+import { PaymentListRelationFilter } from "../../payment/base/PaymentListRelationFilter";
 @InputType()
 class UserWhereInput {
+  @ApiProperty({
+    required: false,
+    type: () => AddressListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => AddressListRelationFilter)
+  @IsOptional()
+  @Field(() => AddressListRelationFilter, {
+    nullable: true,
+  })
+  addresses?: AddressListRelationFilter;
+
   @ApiProperty({
     required: false,
     type: StringFilter,
@@ -72,6 +86,18 @@ class UserWhereInput {
     nullable: true,
   })
   lastName?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => PaymentListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => PaymentListRelationFilter)
+  @IsOptional()
+  @Field(() => PaymentListRelationFilter, {
+    nullable: true,
+  })
+  payments?: PaymentListRelationFilter;
 
   @ApiProperty({
     required: false,

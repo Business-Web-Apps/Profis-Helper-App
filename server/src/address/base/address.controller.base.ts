@@ -46,8 +46,17 @@ export class AddressControllerBase {
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async create(@common.Body() data: AddressCreateInput): Promise<Address> {
     return await this.service.create({
-      data: data,
+      data: {
+        ...data,
+
+        user: data.user
+          ? {
+              connect: data.user,
+            }
+          : undefined,
+      },
       select: {
+        addressType: true,
         city: true,
         country: true,
         createdAt: true,
@@ -56,6 +65,12 @@ export class AddressControllerBase {
         region: true,
         streetName: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -75,6 +90,7 @@ export class AddressControllerBase {
     return this.service.findMany({
       ...args,
       select: {
+        addressType: true,
         city: true,
         country: true,
         createdAt: true,
@@ -83,6 +99,12 @@ export class AddressControllerBase {
         region: true,
         streetName: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
   }
@@ -103,6 +125,7 @@ export class AddressControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
+        addressType: true,
         city: true,
         country: true,
         createdAt: true,
@@ -111,6 +134,12 @@ export class AddressControllerBase {
         region: true,
         streetName: true,
         updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
       },
     });
     if (result === null) {
@@ -138,8 +167,17 @@ export class AddressControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          user: data.user
+            ? {
+                connect: data.user,
+              }
+            : undefined,
+        },
         select: {
+          addressType: true,
           city: true,
           country: true,
           createdAt: true,
@@ -148,6 +186,12 @@ export class AddressControllerBase {
           region: true,
           streetName: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {
@@ -176,6 +220,7 @@ export class AddressControllerBase {
       return await this.service.delete({
         where: params,
         select: {
+          addressType: true,
           city: true,
           country: true,
           createdAt: true,
@@ -184,6 +229,12 @@ export class AddressControllerBase {
           region: true,
           streetName: true,
           updatedAt: true,
+
+          user: {
+            select: {
+              id: true,
+            },
+          },
         },
       });
     } catch (error) {

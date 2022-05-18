@@ -11,10 +11,25 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsEnum } from "class-validator";
+import { AddressUpdateManyWithoutUsersInput } from "./AddressUpdateManyWithoutUsersInput";
+import { ValidateNested, IsOptional, IsString, IsEnum } from "class-validator";
+import { Type } from "class-transformer";
 import { EnumUserGender } from "./EnumUserGender";
+import { PaymentUpdateManyWithoutUsersInput } from "./PaymentUpdateManyWithoutUsersInput";
 @InputType()
 class UserUpdateInput {
+  @ApiProperty({
+    required: false,
+    type: () => AddressUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => AddressUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => AddressUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  addresses?: AddressUpdateManyWithoutUsersInput;
+
   @ApiProperty({
     required: false,
     type: String,
@@ -69,6 +84,18 @@ class UserUpdateInput {
     nullable: true,
   })
   password?: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => PaymentUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => PaymentUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => PaymentUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  payments?: PaymentUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

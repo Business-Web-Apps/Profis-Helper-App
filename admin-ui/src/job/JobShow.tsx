@@ -11,6 +11,7 @@ import {
 } from "react-admin";
 
 import { JOB_TITLE_FIELD } from "./JobTitle";
+import { USER_TITLE_FIELD } from "../user/UserTitle";
 import { JOBTYPE_TITLE_FIELD } from "../jobType/JobTypeTitle";
 
 export const JobShow = (props: ShowProps): React.ReactElement => {
@@ -47,6 +48,21 @@ export const JobShow = (props: ShowProps): React.ReactElement => {
             <TextField label="JobStatus" source="jobStatus" />
             <TextField label="Title" source="title" />
             <DateField source="updatedAt" label="Updated At" />
+          </Datagrid>
+        </ReferenceManyField>
+        <ReferenceManyField reference="Payment" target="JobId" label="Payments">
+          <Datagrid rowClick="show">
+            <TextField label="Amount" source="amount" />
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="ID" source="id" />
+            <ReferenceField label="Job" source="job.id" reference="Job">
+              <TextField source={JOB_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="Method" source="method" />
+            <DateField source="updatedAt" label="Updated At" />
+            <ReferenceField label="User" source="user.id" reference="User">
+              <TextField source={USER_TITLE_FIELD} />
+            </ReferenceField>
           </Datagrid>
         </ReferenceManyField>
       </SimpleShowLayout>

@@ -23,6 +23,7 @@ import {
 import { Type } from "class-transformer";
 import { JobReportCreateNestedManyWithoutJobsInput } from "./JobReportCreateNestedManyWithoutJobsInput";
 import { JobTypeWhereUniqueInput } from "../../jobType/base/JobTypeWhereUniqueInput";
+import { PaymentCreateNestedManyWithoutJobsInput } from "./PaymentCreateNestedManyWithoutJobsInput";
 @InputType()
 class JobCreateInput {
   @ApiProperty({
@@ -111,6 +112,18 @@ class JobCreateInput {
     nullable: true,
   })
   paidAmount?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => PaymentCreateNestedManyWithoutJobsInput,
+  })
+  @ValidateNested()
+  @Type(() => PaymentCreateNestedManyWithoutJobsInput)
+  @IsOptional()
+  @Field(() => PaymentCreateNestedManyWithoutJobsInput, {
+    nullable: true,
+  })
+  payments?: PaymentCreateNestedManyWithoutJobsInput;
 
   @ApiProperty({
     required: true,

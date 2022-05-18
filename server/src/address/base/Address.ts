@@ -11,10 +11,28 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsDate } from "class-validator";
+import { EnumAddressAddressType } from "./EnumAddressAddressType";
+import {
+  IsEnum,
+  IsString,
+  IsDate,
+  ValidateNested,
+  IsOptional,
+} from "class-validator";
 import { Type } from "class-transformer";
+import { User } from "../../user/base/User";
 @ObjectType()
 class Address {
+  @ApiProperty({
+    required: true,
+    enum: EnumAddressAddressType,
+  })
+  @IsEnum(EnumAddressAddressType)
+  @Field(() => EnumAddressAddressType, {
+    nullable: true,
+  })
+  addressType?: "invoice" | "personal" | "other";
+
   @ApiProperty({
     required: true,
     type: String,
@@ -78,5 +96,14 @@ class Address {
   @Type(() => Date)
   @Field(() => Date)
   updatedAt!: Date;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  user?: User | null;
 }
 export { Address };

@@ -1,4 +1,7 @@
+import { User } from "../user/User";
+
 export type Address = {
+  addressType?: "invoice" | "personal" | "other";
   city: string;
   country: string;
   createdAt: Date;
@@ -7,4 +10,5 @@ export type Address = {
   region: string;
   streetName: string;
   updatedAt: Date;
+  user?: User | null;
 };

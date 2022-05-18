@@ -30,6 +30,9 @@ import { Job } from "./Job";
 import { JobReportFindManyArgs } from "../../jobReport/base/JobReportFindManyArgs";
 import { JobReport } from "../../jobReport/base/JobReport";
 import { JobReportWhereUniqueInput } from "../../jobReport/base/JobReportWhereUniqueInput";
+import { PaymentFindManyArgs } from "../../payment/base/PaymentFindManyArgs";
+import { Payment } from "../../payment/base/Payment";
+import { PaymentWhereUniqueInput } from "../../payment/base/PaymentWhereUniqueInput";
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class JobControllerBase {
@@ -365,6 +368,116 @@ export class JobControllerBase {
   ): Promise<void> {
     const data = {
       jobReports: {
+        disconnect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @nestAccessControl.UseRoles({
+    resource: "Payment",
+    action: "read",
+    possession: "any",
+  })
+  @common.Get("/:id/payments")
+  @ApiNestedQuery(PaymentFindManyArgs)
+  async findManyPayments(
+    @common.Req() request: Request,
+    @common.Param() params: JobWhereUniqueInput
+  ): Promise<Payment[]> {
+    const query = plainToClass(PaymentFindManyArgs, request.query);
+    const results = await this.service.findPayments(params.id, {
+      ...query,
+      select: {
+        amount: true,
+        createdAt: true,
+        id: true,
+
+        job: {
+          select: {
+            id: true,
+          },
+        },
+
+        method: true,
+        updatedAt: true,
+
+        user: {
+          select: {
+            id: true,
+          },
+        },
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "Job",
+    action: "update",
+    possession: "any",
+  })
+  @common.Post("/:id/payments")
+  async connectPayments(
+    @common.Param() params: JobWhereUniqueInput,
+    @common.Body() body: PaymentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      payments: {
+        connect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "Job",
+    action: "update",
+    possession: "any",
+  })
+  @common.Patch("/:id/payments")
+  async updatePayments(
+    @common.Param() params: JobWhereUniqueInput,
+    @common.Body() body: PaymentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      payments: {
+        set: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "Job",
+    action: "update",
+    possession: "any",
+  })
+  @common.Delete("/:id/payments")
+  async disconnectPayments(
+    @common.Param() params: JobWhereUniqueInput,
+    @common.Body() body: PaymentWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      payments: {
         disconnect: body,
       },
     };

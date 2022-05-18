@@ -25,6 +25,10 @@ import { JobReportList } from "./jobReport/JobReportList";
 import { JobReportCreate } from "./jobReport/JobReportCreate";
 import { JobReportEdit } from "./jobReport/JobReportEdit";
 import { JobReportShow } from "./jobReport/JobReportShow";
+import { PaymentList } from "./payment/PaymentList";
+import { PaymentCreate } from "./payment/PaymentCreate";
+import { PaymentEdit } from "./payment/PaymentEdit";
+import { PaymentShow } from "./payment/PaymentShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -85,6 +89,13 @@ const App = (): React.ReactElement => {
           edit={JobReportEdit}
           create={JobReportCreate}
           show={JobReportShow}
+        />
+        <Resource
+          name="Payment"
+          list={PaymentList}
+          edit={PaymentEdit}
+          create={PaymentCreate}
+          show={PaymentShow}
         />
       </Admin>
     </div>

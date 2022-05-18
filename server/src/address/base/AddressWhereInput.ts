@@ -11,11 +11,24 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
+import { EnumAddressAddressType } from "./EnumAddressAddressType";
+import { IsEnum, IsOptional, ValidateNested } from "class-validator";
 import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
-import { IsOptional } from "class-validator";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 @InputType()
 class AddressWhereInput {
+  @ApiProperty({
+    required: false,
+    enum: EnumAddressAddressType,
+  })
+  @IsEnum(EnumAddressAddressType)
+  @IsOptional()
+  @Field(() => EnumAddressAddressType, {
+    nullable: true,
+  })
+  addressType?: "invoice" | "personal" | "other";
+
   @ApiProperty({
     required: false,
     type: StringFilter,
@@ -81,5 +94,17 @@ class AddressWhereInput {
     nullable: true,
   })
   streetName?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  user?: UserWhereUniqueInput;
 }
 export { AddressWhereInput };

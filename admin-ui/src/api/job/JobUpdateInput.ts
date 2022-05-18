@@ -1,5 +1,6 @@
 import { JobReportUpdateManyWithoutJobsInput } from "./JobReportUpdateManyWithoutJobsInput";
 import { JobTypeWhereUniqueInput } from "../jobType/JobTypeWhereUniqueInput";
+import { PaymentUpdateManyWithoutJobsInput } from "./PaymentUpdateManyWithoutJobsInput";
 
 export type JobUpdateInput = {
   currentStatus?:
@@ -19,6 +20,7 @@ export type JobUpdateInput = {
   jobType?: JobTypeWhereUniqueInput | null;
   numberOfHelper?: number;
   paidAmount?: number | null;
+  payments?: PaymentUpdateManyWithoutJobsInput;
   pricePerHour?: number;
   startDate?: Date;
   title?: string;

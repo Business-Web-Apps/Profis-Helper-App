@@ -20,6 +20,7 @@ import { FloatFilter } from "../../util/FloatFilter";
 import { JobReportListRelationFilter } from "../../jobReport/base/JobReportListRelationFilter";
 import { JobTypeWhereUniqueInput } from "../../jobType/base/JobTypeWhereUniqueInput";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
+import { PaymentListRelationFilter } from "../../payment/base/PaymentListRelationFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 @InputType()
 class JobWhereInput {
@@ -132,6 +133,18 @@ class JobWhereInput {
     nullable: true,
   })
   paidAmount?: FloatNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => PaymentListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => PaymentListRelationFilter)
+  @IsOptional()
+  @Field(() => PaymentListRelationFilter, {
+    nullable: true,
+  })
+  payments?: PaymentListRelationFilter;
 
   @ApiProperty({
     required: false,

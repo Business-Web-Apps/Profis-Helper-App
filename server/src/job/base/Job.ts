@@ -23,6 +23,7 @@ import { Type } from "class-transformer";
 import { EnumJobCurrentStatus } from "./EnumJobCurrentStatus";
 import { JobReport } from "../../jobReport/base/JobReport";
 import { JobType } from "../../jobType/base/JobType";
+import { Payment } from "../../payment/base/Payment";
 @ObjectType()
 class Job {
   @ApiProperty({
@@ -123,6 +124,15 @@ class Job {
     nullable: true,
   })
   paidAmount!: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => [Payment],
+  })
+  @ValidateNested()
+  @Type(() => Payment)
+  @IsOptional()
+  payments?: Array<Payment>;
 
   @ApiProperty({
     required: true,

@@ -23,6 +23,7 @@ import {
 import { Type } from "class-transformer";
 import { JobReportUpdateManyWithoutJobsInput } from "./JobReportUpdateManyWithoutJobsInput";
 import { JobTypeWhereUniqueInput } from "../../jobType/base/JobTypeWhereUniqueInput";
+import { PaymentUpdateManyWithoutJobsInput } from "./PaymentUpdateManyWithoutJobsInput";
 @InputType()
 class JobUpdateInput {
   @ApiProperty({
@@ -123,6 +124,18 @@ class JobUpdateInput {
     nullable: true,
   })
   paidAmount?: number | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => PaymentUpdateManyWithoutJobsInput,
+  })
+  @ValidateNested()
+  @Type(() => PaymentUpdateManyWithoutJobsInput)
+  @IsOptional()
+  @Field(() => PaymentUpdateManyWithoutJobsInput, {
+    nullable: true,
+  })
+  payments?: PaymentUpdateManyWithoutJobsInput;
 
   @ApiProperty({
     required: false,

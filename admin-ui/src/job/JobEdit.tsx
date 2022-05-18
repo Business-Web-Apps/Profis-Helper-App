@@ -15,6 +15,7 @@ import {
 
 import { JobReportTitle } from "../jobReport/JobReportTitle";
 import { JobTypeTitle } from "../jobType/JobTypeTitle";
+import { PaymentTitle } from "../payment/PaymentTitle";
 
 export const JobEdit = (props: EditProps): React.ReactElement => {
   return (
@@ -53,6 +54,14 @@ export const JobEdit = (props: EditProps): React.ReactElement => {
         </ReferenceInput>
         <NumberInput label="NumberOfHelper" source="numberOfHelper" />
         <NumberInput label="PaidAmount" source="paidAmount" />
+        <ReferenceArrayInput
+          source="payments"
+          reference="Payment"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={PaymentTitle} />
+        </ReferenceArrayInput>
         <NumberInput label="PricePerHour" source="pricePerHour" />
         <DateTimeInput label="StartDate" source="startDate" />
         <TextInput label="Title" multiline source="title" />

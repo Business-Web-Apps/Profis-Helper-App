@@ -4,6 +4,7 @@ import { FloatFilter } from "../../util/FloatFilter";
 import { JobReportListRelationFilter } from "../jobReport/JobReportListRelationFilter";
 import { JobTypeWhereUniqueInput } from "../jobType/JobTypeWhereUniqueInput";
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
+import { PaymentListRelationFilter } from "../payment/PaymentListRelationFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 
 export type JobWhereInput = {
@@ -25,6 +26,7 @@ export type JobWhereInput = {
   jobType?: JobTypeWhereUniqueInput;
   numberOfHelper?: FloatFilter;
   paidAmount?: FloatNullableFilter;
+  payments?: PaymentListRelationFilter;
   pricePerHour?: FloatFilter;
   startDate?: DateTimeFilter;
   title?: StringFilter;

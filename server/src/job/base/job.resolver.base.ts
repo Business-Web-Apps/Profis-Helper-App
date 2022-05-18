@@ -27,6 +27,8 @@ import { JobFindUniqueArgs } from "./JobFindUniqueArgs";
 import { Job } from "./Job";
 import { JobReportFindManyArgs } from "../../jobReport/base/JobReportFindManyArgs";
 import { JobReport } from "../../jobReport/base/JobReport";
+import { PaymentFindManyArgs } from "../../payment/base/PaymentFindManyArgs";
+import { Payment } from "../../payment/base/Payment";
 import { JobType } from "../../jobType/base/JobType";
 import { JobService } from "../job.service";
 
@@ -167,6 +169,26 @@ export class JobResolverBase {
     @graphql.Args() args: JobReportFindManyArgs
   ): Promise<JobReport[]> {
     const results = await this.service.findJobReports(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Payment])
+  @nestAccessControl.UseRoles({
+    resource: "Payment",
+    action: "read",
+    possession: "any",
+  })
+  async payments(
+    @graphql.Parent() parent: Job,
+    @graphql.Args() args: PaymentFindManyArgs
+  ): Promise<Payment[]> {
+    const results = await this.service.findPayments(parent.id, args);
 
     if (!results) {
       return [];

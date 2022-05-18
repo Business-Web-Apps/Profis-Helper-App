@@ -11,10 +11,25 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsEnum } from "class-validator";
+import { AddressCreateNestedManyWithoutUsersInput } from "./AddressCreateNestedManyWithoutUsersInput";
+import { ValidateNested, IsOptional, IsString, IsEnum } from "class-validator";
+import { Type } from "class-transformer";
 import { EnumUserGender } from "./EnumUserGender";
+import { PaymentCreateNestedManyWithoutUsersInput } from "./PaymentCreateNestedManyWithoutUsersInput";
 @InputType()
 class UserCreateInput {
+  @ApiProperty({
+    required: false,
+    type: () => AddressCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => AddressCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => AddressCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  addresses?: AddressCreateNestedManyWithoutUsersInput;
+
   @ApiProperty({
     required: true,
     type: String,
@@ -63,6 +78,18 @@ class UserCreateInput {
   @IsString()
   @Field(() => String)
   password!: string;
+
+  @ApiProperty({
+    required: false,
+    type: () => PaymentCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => PaymentCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => PaymentCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  payments?: PaymentCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: true,
