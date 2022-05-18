@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { JobCreateNestedManyWithoutJobTypesInput } from "./JobCreateNestedManyWithoutJobTypesInput";
 
 export type JobTypeCreateInput = {
@@ -6,4 +7,8 @@ export type JobTypeCreateInput = {
   jobs?: JobCreateNestedManyWithoutJobTypesInput;
   name: "move" | "gardnening" | "furnitureAssemby";
   pricePerHour: number;
+=======
+export type JobTypeCreateInput = {
+  name: string;
+>>>>>>> main
 };

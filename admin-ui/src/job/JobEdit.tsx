@@ -8,6 +8,7 @@ import {
   TextInput,
   DateTimeInput,
   NumberInput,
+<<<<<<< HEAD
   ReferenceArrayInput,
   SelectArrayInput,
   ReferenceInput,
@@ -16,6 +17,10 @@ import {
 import { JobReportTitle } from "../jobReport/JobReportTitle";
 import { JobTypeTitle } from "../jobType/JobTypeTitle";
 
+=======
+} from "react-admin";
+
+>>>>>>> main
 export const JobEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
@@ -40,6 +45,7 @@ export const JobEdit = (props: EditProps): React.ReactElement => {
         <TextInput label="description" multiline source="description" />
         <DateTimeInput label="EndDate" source="endDate" />
         <NumberInput label="EstimatedDuration" source="estimatedDuration" />
+<<<<<<< HEAD
         <ReferenceArrayInput
           source="jobReports"
           reference="JobReport"
@@ -51,6 +57,19 @@ export const JobEdit = (props: EditProps): React.ReactElement => {
         <ReferenceInput source="jobtype.id" reference="JobType" label="JobType">
           <SelectInput optionText={JobTypeTitle} />
         </ReferenceInput>
+=======
+        <SelectInput
+          source="jobType"
+          label="JobType"
+          choices={[
+            { label: "Move", value: "move" },
+            { label: "Gardening", value: "gardening" },
+            { label: "Furniture Assembly", value: "furnitureAssembly" },
+          ]}
+          optionText="label"
+          optionValue="value"
+        />
+>>>>>>> main
         <NumberInput label="NumberOfHelper" source="numberOfHelper" />
         <NumberInput label="PaidAmount" source="paidAmount" />
         <NumberInput label="PricePerHour" source="pricePerHour" />

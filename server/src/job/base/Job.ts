@@ -17,12 +17,19 @@ import {
   IsString,
   IsOptional,
   IsNumber,
+<<<<<<< HEAD
   ValidateNested,
 } from "class-validator";
 import { Type } from "class-transformer";
 import { EnumJobCurrentStatus } from "./EnumJobCurrentStatus";
 import { JobReport } from "../../jobReport/base/JobReport";
 import { JobType } from "../../jobType/base/JobType";
+=======
+} from "class-validator";
+import { Type } from "class-transformer";
+import { EnumJobCurrentStatus } from "./EnumJobCurrentStatus";
+import { EnumJobJobType } from "./EnumJobJobType";
+>>>>>>> main
 @ObjectType()
 class Job {
   @ApiProperty({
@@ -88,6 +95,7 @@ class Job {
   id!: string;
 
   @ApiProperty({
+<<<<<<< HEAD
     required: false,
     type: () => [JobReport],
   })
@@ -104,6 +112,16 @@ class Job {
   @Type(() => JobType)
   @IsOptional()
   jobType?: JobType | null;
+=======
+    required: true,
+    enum: EnumJobJobType,
+  })
+  @IsEnum(EnumJobJobType)
+  @Field(() => EnumJobJobType, {
+    nullable: true,
+  })
+  jobType?: "move" | "gardening" | "furnitureAssembly";
+>>>>>>> main
 
   @ApiProperty({
     required: true,

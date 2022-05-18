@@ -21,10 +21,13 @@ import { JobTypeList } from "./jobType/JobTypeList";
 import { JobTypeCreate } from "./jobType/JobTypeCreate";
 import { JobTypeEdit } from "./jobType/JobTypeEdit";
 import { JobTypeShow } from "./jobType/JobTypeShow";
+<<<<<<< HEAD
 import { JobReportList } from "./jobReport/JobReportList";
 import { JobReportCreate } from "./jobReport/JobReportCreate";
 import { JobReportEdit } from "./jobReport/JobReportEdit";
 import { JobReportShow } from "./jobReport/JobReportShow";
+=======
+>>>>>>> main
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -79,6 +82,7 @@ const App = (): React.ReactElement => {
           create={JobTypeCreate}
           show={JobTypeShow}
         />
+<<<<<<< HEAD
         <Resource
           name="JobReport"
           list={JobReportList}
@@ -86,6 +90,8 @@ const App = (): React.ReactElement => {
           create={JobReportCreate}
           show={JobReportShow}
         />
+=======
+>>>>>>> main
       </Admin>
     </div>
   );

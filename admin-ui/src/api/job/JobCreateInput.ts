@@ -1,6 +1,9 @@
+<<<<<<< HEAD
 import { JobReportCreateNestedManyWithoutJobsInput } from "./JobReportCreateNestedManyWithoutJobsInput";
 import { JobTypeWhereUniqueInput } from "../jobType/JobTypeWhereUniqueInput";
 
+=======
+>>>>>>> main
 export type JobCreateInput = {
   currentStatus:
     | "submitted"
@@ -15,8 +18,12 @@ export type JobCreateInput = {
   description: string;
   endDate?: Date | null;
   estimatedDuration: number;
+<<<<<<< HEAD
   jobReports?: JobReportCreateNestedManyWithoutJobsInput;
   jobType?: JobTypeWhereUniqueInput | null;
+=======
+  jobType: "move" | "gardening" | "furnitureAssembly";
+>>>>>>> main
   numberOfHelper: number;
   paidAmount?: number | null;
   pricePerHour: number;

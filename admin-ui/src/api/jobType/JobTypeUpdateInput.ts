@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { JobUpdateManyWithoutJobTypesInput } from "./JobUpdateManyWithoutJobTypesInput";
 
 export type JobTypeUpdateInput = {
@@ -6,4 +7,8 @@ export type JobTypeUpdateInput = {
   jobs?: JobUpdateManyWithoutJobTypesInput;
   name?: "move" | "gardnening" | "furnitureAssemby";
   pricePerHour?: number;
+=======
+export type JobTypeUpdateInput = {
+  name?: string;
+>>>>>>> main
 };

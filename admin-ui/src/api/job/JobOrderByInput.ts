@@ -7,7 +7,11 @@ export type JobOrderByInput = {
   endDate?: SortOrder;
   estimatedDuration?: SortOrder;
   id?: SortOrder;
+<<<<<<< HEAD
   jobTypeId?: SortOrder;
+=======
+  jobType?: SortOrder;
+>>>>>>> main
   numberOfHelper?: SortOrder;
   paidAmount?: SortOrder;
   pricePerHour?: SortOrder;

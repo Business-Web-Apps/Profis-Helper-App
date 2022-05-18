@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Job } from "../job/Job";
 
 export type JobType = {
@@ -8,5 +9,11 @@ export type JobType = {
   jobs?: Array<Job>;
   name?: "move" | "gardnening" | "furnitureAssemby";
   pricePerHour: number;
+=======
+export type JobType = {
+  createdAt: Date;
+  id: string;
+  name: string;
+>>>>>>> main
   updatedAt: Date;
 };

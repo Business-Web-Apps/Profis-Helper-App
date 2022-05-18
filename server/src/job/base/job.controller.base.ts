@@ -27,9 +27,12 @@ import { JobWhereUniqueInput } from "./JobWhereUniqueInput";
 import { JobFindManyArgs } from "./JobFindManyArgs";
 import { JobUpdateInput } from "./JobUpdateInput";
 import { Job } from "./Job";
+<<<<<<< HEAD
 import { JobReportFindManyArgs } from "../../jobReport/base/JobReportFindManyArgs";
 import { JobReport } from "../../jobReport/base/JobReport";
 import { JobReportWhereUniqueInput } from "../../jobReport/base/JobReportWhereUniqueInput";
+=======
+>>>>>>> main
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class JobControllerBase {
@@ -49,6 +52,7 @@ export class JobControllerBase {
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async create(@common.Body() data: JobCreateInput): Promise<Job> {
     return await this.service.create({
+<<<<<<< HEAD
       data: {
         ...data,
 
@@ -58,6 +62,9 @@ export class JobControllerBase {
             }
           : undefined,
       },
+=======
+      data: data,
+>>>>>>> main
       select: {
         createdAt: true,
         currentStatus: true,
@@ -65,6 +72,7 @@ export class JobControllerBase {
         endDate: true,
         estimatedDuration: true,
         id: true,
+<<<<<<< HEAD
 
         jobType: {
           select: {
@@ -72,6 +80,9 @@ export class JobControllerBase {
           },
         },
 
+=======
+        jobType: true,
+>>>>>>> main
         numberOfHelper: true,
         paidAmount: true,
         pricePerHour: true,
@@ -103,6 +114,7 @@ export class JobControllerBase {
         endDate: true,
         estimatedDuration: true,
         id: true,
+<<<<<<< HEAD
 
         jobType: {
           select: {
@@ -110,6 +122,9 @@ export class JobControllerBase {
           },
         },
 
+=======
+        jobType: true,
+>>>>>>> main
         numberOfHelper: true,
         paidAmount: true,
         pricePerHour: true,
@@ -142,6 +157,7 @@ export class JobControllerBase {
         endDate: true,
         estimatedDuration: true,
         id: true,
+<<<<<<< HEAD
 
         jobType: {
           select: {
@@ -149,6 +165,9 @@ export class JobControllerBase {
           },
         },
 
+=======
+        jobType: true,
+>>>>>>> main
         numberOfHelper: true,
         paidAmount: true,
         pricePerHour: true,
@@ -182,6 +201,7 @@ export class JobControllerBase {
     try {
       return await this.service.update({
         where: params,
+<<<<<<< HEAD
         data: {
           ...data,
 
@@ -191,6 +211,9 @@ export class JobControllerBase {
               }
             : undefined,
         },
+=======
+        data: data,
+>>>>>>> main
         select: {
           createdAt: true,
           currentStatus: true,
@@ -198,6 +221,7 @@ export class JobControllerBase {
           endDate: true,
           estimatedDuration: true,
           id: true,
+<<<<<<< HEAD
 
           jobType: {
             select: {
@@ -205,6 +229,9 @@ export class JobControllerBase {
             },
           },
 
+=======
+          jobType: true,
+>>>>>>> main
           numberOfHelper: true,
           paidAmount: true,
           pricePerHour: true,
@@ -245,6 +272,7 @@ export class JobControllerBase {
           endDate: true,
           estimatedDuration: true,
           id: true,
+<<<<<<< HEAD
 
           jobType: {
             select: {
@@ -252,6 +280,9 @@ export class JobControllerBase {
             },
           },
 
+=======
+          jobType: true,
+>>>>>>> main
           numberOfHelper: true,
           paidAmount: true,
           pricePerHour: true,
@@ -269,6 +300,7 @@ export class JobControllerBase {
       throw error;
     }
   }
+<<<<<<< HEAD
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @nestAccessControl.UseRoles({
@@ -374,4 +406,6 @@ export class JobControllerBase {
       select: { id: true },
     });
   }
+=======
+>>>>>>> main
 }

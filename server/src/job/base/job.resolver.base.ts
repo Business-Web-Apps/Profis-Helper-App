@@ -25,9 +25,12 @@ import { DeleteJobArgs } from "./DeleteJobArgs";
 import { JobFindManyArgs } from "./JobFindManyArgs";
 import { JobFindUniqueArgs } from "./JobFindUniqueArgs";
 import { Job } from "./Job";
+<<<<<<< HEAD
 import { JobReportFindManyArgs } from "../../jobReport/base/JobReportFindManyArgs";
 import { JobReport } from "../../jobReport/base/JobReport";
 import { JobType } from "../../jobType/base/JobType";
+=======
+>>>>>>> main
 import { JobService } from "../job.service";
 
 @graphql.Resolver(() => Job)
@@ -93,6 +96,7 @@ export class JobResolverBase {
   async createJob(@graphql.Args() args: CreateJobArgs): Promise<Job> {
     return await this.service.create({
       ...args,
+<<<<<<< HEAD
       data: {
         ...args.data,
 
@@ -102,6 +106,9 @@ export class JobResolverBase {
             }
           : undefined,
       },
+=======
+      data: args.data,
+>>>>>>> main
     });
   }
 
@@ -116,6 +123,7 @@ export class JobResolverBase {
     try {
       return await this.service.update({
         ...args,
+<<<<<<< HEAD
         data: {
           ...args.data,
 
@@ -125,6 +133,9 @@ export class JobResolverBase {
               }
             : undefined,
         },
+=======
+        data: args.data,
+>>>>>>> main
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -154,6 +165,7 @@ export class JobResolverBase {
       throw error;
     }
   }
+<<<<<<< HEAD
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
   @graphql.ResolveField(() => [JobReport])
@@ -190,4 +202,6 @@ export class JobResolverBase {
     }
     return result;
   }
+=======
+>>>>>>> main
 }
