@@ -1,5 +1,4 @@
 import * as React from "react";
-<<<<<<< HEAD
 
 import {
   Edit,
@@ -13,15 +12,11 @@ import {
 } from "react-admin";
 
 import { JobTitle } from "../job/JobTitle";
-=======
-import { Edit, SimpleForm, EditProps, TextInput } from "react-admin";
->>>>>>> main
 
 export const JobTypeEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
-<<<<<<< HEAD
         <TextInput label="Description" multiline source="description" />
         <TextInput label="Image" source="image" />
         <ReferenceArrayInput
@@ -44,9 +39,6 @@ export const JobTypeEdit = (props: EditProps): React.ReactElement => {
           optionValue="value"
         />
         <NumberInput label="PricePerHour" source="pricePerHour" />
-=======
-        <TextInput label="Name" source="name" />
->>>>>>> main
       </SimpleForm>
     </Edit>
   );

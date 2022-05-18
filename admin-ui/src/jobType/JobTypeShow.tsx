@@ -1,15 +1,10 @@
 import * as React from "react";
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 import {
   Show,
   SimpleShowLayout,
   ShowProps,
   DateField,
   TextField,
-<<<<<<< HEAD
   ReferenceManyField,
   Datagrid,
   ReferenceField,
@@ -17,16 +12,11 @@ import {
 
 import { JOBTYPE_TITLE_FIELD } from "./JobTypeTitle";
 
-=======
-} from "react-admin";
-
->>>>>>> main
 export const JobTypeShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
       <SimpleShowLayout>
         <DateField source="createdAt" label="Created At" />
-<<<<<<< HEAD
         <TextField label="Description" source="description" />
         <TextField label="ID" source="id" />
         <TextField label="Image" source="image" />
@@ -56,11 +46,6 @@ export const JobTypeShow = (props: ShowProps): React.ReactElement => {
             <DateField source="updatedAt" label="Updated At" />
           </Datagrid>
         </ReferenceManyField>
-=======
-        <TextField label="ID" source="id" />
-        <TextField label="Name" source="name" />
-        <DateField source="updatedAt" label="Updated At" />
->>>>>>> main
       </SimpleShowLayout>
     </Show>
   );

@@ -1,5 +1,4 @@
 import * as React from "react";
-<<<<<<< HEAD
 import {
   List,
   Datagrid,
@@ -10,10 +9,6 @@ import {
 } from "react-admin";
 import Pagination from "../Components/Pagination";
 import { JOBTYPE_TITLE_FIELD } from "../jobType/JobTypeTitle";
-=======
-import { List, Datagrid, ListProps, DateField, TextField } from "react-admin";
-import Pagination from "../Components/Pagination";
->>>>>>> main
 
 export const JobList = (props: ListProps): React.ReactElement => {
   return (
@@ -31,13 +26,9 @@ export const JobList = (props: ListProps): React.ReactElement => {
         <TextField label="EndDate" source="endDate" />
         <TextField label="EstimatedDuration" source="estimatedDuration" />
         <TextField label="ID" source="id" />
-<<<<<<< HEAD
         <ReferenceField label="JobType" source="jobtype.id" reference="JobType">
           <TextField source={JOBTYPE_TITLE_FIELD} />
         </ReferenceField>
-=======
-        <TextField label="JobType" source="jobType" />
->>>>>>> main
         <TextField label="NumberOfHelper" source="numberOfHelper" />
         <TextField label="PaidAmount" source="paidAmount" />
         <TextField label="PricePerHour" source="pricePerHour" />
