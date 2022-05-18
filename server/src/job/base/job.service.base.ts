@@ -10,7 +10,11 @@ https://docs.amplication.com/docs/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { PrismaService } from "nestjs-prisma";
+<<<<<<< HEAD
+import { Prisma, Job, JobReport, JobType } from "@prisma/client";
+=======
 import { Prisma, Job } from "@prisma/client";
+>>>>>>> main
 
 export class JobServiceBase {
   constructor(protected readonly prisma: PrismaService) {}
@@ -46,4 +50,26 @@ export class JobServiceBase {
   ): Promise<Job> {
     return this.prisma.job.delete(args);
   }
+<<<<<<< HEAD
+
+  async findJobReports(
+    parentId: string,
+    args: Prisma.JobReportFindManyArgs
+  ): Promise<JobReport[]> {
+    return this.prisma.job
+      .findUnique({
+        where: { id: parentId },
+      })
+      .jobReports(args);
+  }
+
+  async getJobType(parentId: string): Promise<JobType | null> {
+    return this.prisma.job
+      .findUnique({
+        where: { id: parentId },
+      })
+      .jobType();
+  }
+=======
+>>>>>>> main
 }

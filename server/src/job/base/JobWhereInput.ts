@@ -12,12 +12,21 @@ https://docs.amplication.com/docs/how-to/custom-code
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { EnumJobCurrentStatus } from "./EnumJobCurrentStatus";
+<<<<<<< HEAD
+import { IsEnum, IsOptional, ValidateNested } from "class-validator";
+=======
 import { IsEnum, IsOptional } from "class-validator";
+>>>>>>> main
 import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
 import { DateTimeNullableFilter } from "../../util/DateTimeNullableFilter";
 import { FloatFilter } from "../../util/FloatFilter";
+<<<<<<< HEAD
+import { JobReportListRelationFilter } from "../../jobReport/base/JobReportListRelationFilter";
+import { JobTypeWhereUniqueInput } from "../../jobType/base/JobTypeWhereUniqueInput";
+=======
 import { EnumJobJobType } from "./EnumJobJobType";
+>>>>>>> main
 import { FloatNullableFilter } from "../../util/FloatNullableFilter";
 import { DateTimeFilter } from "../../util/DateTimeFilter";
 @InputType()
@@ -88,6 +97,29 @@ class JobWhereInput {
 
   @ApiProperty({
     required: false,
+<<<<<<< HEAD
+    type: () => JobReportListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => JobReportListRelationFilter)
+  @IsOptional()
+  @Field(() => JobReportListRelationFilter, {
+    nullable: true,
+  })
+  jobReports?: JobReportListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => JobTypeWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => JobTypeWhereUniqueInput)
+  @IsOptional()
+  @Field(() => JobTypeWhereUniqueInput, {
+    nullable: true,
+  })
+  jobType?: JobTypeWhereUniqueInput;
+=======
     enum: EnumJobJobType,
   })
   @IsEnum(EnumJobJobType)
@@ -96,6 +128,7 @@ class JobWhereInput {
     nullable: true,
   })
   jobType?: "move" | "gardening" | "furnitureAssembly";
+>>>>>>> main
 
   @ApiProperty({
     required: false,

@@ -34,6 +34,15 @@ class JobTypeOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  description?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   id?: SortOrder;
 
   @ApiProperty({
@@ -43,7 +52,25 @@ class JobTypeOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  image?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   name?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  pricePerHour?: SortOrder;
 
   @ApiProperty({
     required: false,

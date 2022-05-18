@@ -13,9 +13,24 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringFilter } from "../../util/StringFilter";
 import { Type } from "class-transformer";
-import { IsOptional } from "class-validator";
+import { IsOptional, ValidateNested, IsEnum } from "class-validator";
+import { StringNullableFilter } from "../../util/StringNullableFilter";
+import { JobListRelationFilter } from "../../job/base/JobListRelationFilter";
+import { EnumJobTypeName } from "./EnumJobTypeName";
+import { FloatFilter } from "../../util/FloatFilter";
 @InputType()
 class JobTypeWhereInput {
+  @ApiProperty({
+    required: false,
+    type: StringFilter,
+  })
+  @Type(() => StringFilter)
+  @IsOptional()
+  @Field(() => StringFilter, {
+    nullable: true,
+  })
+  description?: StringFilter;
+
   @ApiProperty({
     required: false,
     type: StringFilter,
@@ -29,13 +44,47 @@ class JobTypeWhereInput {
 
   @ApiProperty({
     required: false,
-    type: StringFilter,
+    type: StringNullableFilter,
   })
-  @Type(() => StringFilter)
+  @Type(() => StringNullableFilter)
   @IsOptional()
-  @Field(() => StringFilter, {
+  @Field(() => StringNullableFilter, {
     nullable: true,
   })
-  name?: StringFilter;
+  image?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => JobListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => JobListRelationFilter)
+  @IsOptional()
+  @Field(() => JobListRelationFilter, {
+    nullable: true,
+  })
+  jobs?: JobListRelationFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumJobTypeName,
+  })
+  @IsEnum(EnumJobTypeName)
+  @IsOptional()
+  @Field(() => EnumJobTypeName, {
+    nullable: true,
+  })
+  name?: "move" | "gardnening" | "furnitureAssemby";
+
+  @ApiProperty({
+    required: false,
+    type: FloatFilter,
+  })
+  @Type(() => FloatFilter)
+  @IsOptional()
+  @Field(() => FloatFilter, {
+    nullable: true,
+  })
+  pricePerHour?: FloatFilter;
 }
 export { JobTypeWhereInput };

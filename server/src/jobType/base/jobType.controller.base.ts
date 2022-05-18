@@ -27,6 +27,9 @@ import { JobTypeWhereUniqueInput } from "./JobTypeWhereUniqueInput";
 import { JobTypeFindManyArgs } from "./JobTypeFindManyArgs";
 import { JobTypeUpdateInput } from "./JobTypeUpdateInput";
 import { JobType } from "./JobType";
+import { JobFindManyArgs } from "../../job/base/JobFindManyArgs";
+import { Job } from "../../job/base/Job";
+import { JobWhereUniqueInput } from "../../job/base/JobWhereUniqueInput";
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class JobTypeControllerBase {
@@ -49,8 +52,11 @@ export class JobTypeControllerBase {
       data: data,
       select: {
         createdAt: true,
+        description: true,
         id: true,
+        image: true,
         name: true,
+        pricePerHour: true,
         updatedAt: true,
       },
     });
@@ -72,8 +78,11 @@ export class JobTypeControllerBase {
       ...args,
       select: {
         createdAt: true,
+        description: true,
         id: true,
+        image: true,
         name: true,
+        pricePerHour: true,
         updatedAt: true,
       },
     });
@@ -96,8 +105,11 @@ export class JobTypeControllerBase {
       where: params,
       select: {
         createdAt: true,
+        description: true,
         id: true,
+        image: true,
         name: true,
+        pricePerHour: true,
         updatedAt: true,
       },
     });
@@ -129,8 +141,11 @@ export class JobTypeControllerBase {
         data: data,
         select: {
           createdAt: true,
+          description: true,
           id: true,
+          image: true,
           name: true,
+          pricePerHour: true,
           updatedAt: true,
         },
       });
@@ -161,8 +176,11 @@ export class JobTypeControllerBase {
         where: params,
         select: {
           createdAt: true,
+          description: true,
           id: true,
+          image: true,
           name: true,
+          pricePerHour: true,
           updatedAt: true,
         },
       });
@@ -174,5 +192,116 @@ export class JobTypeControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @nestAccessControl.UseRoles({
+    resource: "Job",
+    action: "read",
+    possession: "any",
+  })
+  @common.Get("/:id/jobs")
+  @ApiNestedQuery(JobFindManyArgs)
+  async findManyJobs(
+    @common.Req() request: Request,
+    @common.Param() params: JobTypeWhereUniqueInput
+  ): Promise<Job[]> {
+    const query = plainToClass(JobFindManyArgs, request.query);
+    const results = await this.service.findJobs(params.id, {
+      ...query,
+      select: {
+        createdAt: true,
+        currentStatus: true,
+        description: true,
+        endDate: true,
+        estimatedDuration: true,
+        id: true,
+
+        jobType: {
+          select: {
+            id: true,
+          },
+        },
+
+        numberOfHelper: true,
+        paidAmount: true,
+        pricePerHour: true,
+        startDate: true,
+        title: true,
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "JobType",
+    action: "update",
+    possession: "any",
+  })
+  @common.Post("/:id/jobs")
+  async connectJobs(
+    @common.Param() params: JobTypeWhereUniqueInput,
+    @common.Body() body: JobWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      jobs: {
+        connect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "JobType",
+    action: "update",
+    possession: "any",
+  })
+  @common.Patch("/:id/jobs")
+  async updateJobs(
+    @common.Param() params: JobTypeWhereUniqueInput,
+    @common.Body() body: JobWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      jobs: {
+        set: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "JobType",
+    action: "update",
+    possession: "any",
+  })
+  @common.Delete("/:id/jobs")
+  async disconnectJobs(
+    @common.Param() params: JobTypeWhereUniqueInput,
+    @common.Body() body: JobWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      jobs: {
+        disconnect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

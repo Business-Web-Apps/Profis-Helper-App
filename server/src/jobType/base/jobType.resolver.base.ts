@@ -25,6 +25,8 @@ import { DeleteJobTypeArgs } from "./DeleteJobTypeArgs";
 import { JobTypeFindManyArgs } from "./JobTypeFindManyArgs";
 import { JobTypeFindUniqueArgs } from "./JobTypeFindUniqueArgs";
 import { JobType } from "./JobType";
+import { JobFindManyArgs } from "../../job/base/JobFindManyArgs";
+import { Job } from "../../job/base/Job";
 import { JobTypeService } from "../jobType.service";
 
 @graphql.Resolver(() => JobType)
@@ -144,5 +146,25 @@ export class JobTypeResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Job])
+  @nestAccessControl.UseRoles({
+    resource: "Job",
+    action: "read",
+    possession: "any",
+  })
+  async jobs(
+    @graphql.Parent() parent: JobType,
+    @graphql.Args() args: JobFindManyArgs
+  ): Promise<Job[]> {
+    const results = await this.service.findJobs(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
   }
 }

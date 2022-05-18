@@ -670,5 +670,215 @@
     "resource": "JobType",
     "action": "read:any",
     "attributes": "*"
+  },
+  {
+    "role": "helper",
+    "resource": "JobReport",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "externUser",
+    "resource": "JobReport",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "JobReport",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "JobReport",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "employee",
+    "resource": "JobReport",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "JobReport",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "customer",
+    "resource": "JobReport",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "helper",
+    "resource": "JobReport",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "externUser",
+    "resource": "JobReport",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "JobReport",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "JobReport",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "employee",
+    "resource": "JobReport",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "JobReport",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "customer",
+    "resource": "JobReport",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "helper",
+    "resource": "JobReport",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "externUser",
+    "resource": "JobReport",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "JobReport",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "JobReport",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "employee",
+    "resource": "JobReport",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "JobReport",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "customer",
+    "resource": "JobReport",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "helper",
+    "resource": "JobReport",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "externUser",
+    "resource": "JobReport",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "JobReport",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "JobReport",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "employee",
+    "resource": "JobReport",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "JobReport",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "customer",
+    "resource": "JobReport",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "helper",
+    "resource": "JobReport",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "externUser",
+    "resource": "JobReport",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "user",
+    "resource": "JobReport",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "JobReport",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "employee",
+    "resource": "JobReport",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superUser",
+    "resource": "JobReport",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "customer",
+    "resource": "JobReport",
+    "action": "read:any",
+    "attributes": "*"
   }
 ]

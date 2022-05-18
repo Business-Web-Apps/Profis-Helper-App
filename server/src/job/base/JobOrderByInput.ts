@@ -79,7 +79,11 @@ class JobOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+<<<<<<< HEAD
+  jobTypeId?: SortOrder;
+=======
   jobType?: SortOrder;
+>>>>>>> main
 
   @ApiProperty({
     required: false,

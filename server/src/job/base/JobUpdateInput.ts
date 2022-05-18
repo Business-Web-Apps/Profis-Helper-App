@@ -18,9 +18,17 @@ import {
   IsString,
   IsDate,
   IsNumber,
+<<<<<<< HEAD
+  ValidateNested,
+} from "class-validator";
+import { Type } from "class-transformer";
+import { JobReportUpdateManyWithoutJobsInput } from "./JobReportUpdateManyWithoutJobsInput";
+import { JobTypeWhereUniqueInput } from "../../jobType/base/JobTypeWhereUniqueInput";
+=======
 } from "class-validator";
 import { Type } from "class-transformer";
 import { EnumJobJobType } from "./EnumJobJobType";
+>>>>>>> main
 @InputType()
 class JobUpdateInput {
   @ApiProperty({
@@ -78,6 +86,29 @@ class JobUpdateInput {
 
   @ApiProperty({
     required: false,
+<<<<<<< HEAD
+    type: () => JobReportUpdateManyWithoutJobsInput,
+  })
+  @ValidateNested()
+  @Type(() => JobReportUpdateManyWithoutJobsInput)
+  @IsOptional()
+  @Field(() => JobReportUpdateManyWithoutJobsInput, {
+    nullable: true,
+  })
+  jobReports?: JobReportUpdateManyWithoutJobsInput;
+
+  @ApiProperty({
+    required: false,
+    type: () => JobTypeWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => JobTypeWhereUniqueInput)
+  @IsOptional()
+  @Field(() => JobTypeWhereUniqueInput, {
+    nullable: true,
+  })
+  jobType?: JobTypeWhereUniqueInput | null;
+=======
     enum: EnumJobJobType,
   })
   @IsEnum(EnumJobJobType)
@@ -86,6 +117,7 @@ class JobUpdateInput {
     nullable: true,
   })
   jobType?: "move" | "gardening" | "furnitureAssembly";
+>>>>>>> main
 
   @ApiProperty({
     required: false,

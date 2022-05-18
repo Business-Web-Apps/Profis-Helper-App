@@ -38,7 +38,9 @@ model Job {
   endDate           DateTime?
   estimatedDuration Float
   id                String               @id @default(cuid())
-  jobType           EnumJobJobType
+  jobReports        JobReport[]
+  jobType           JobType?             @relation(fields: [jobTypeId], references: [id])
+  jobTypeId         String?
   numberOfHelper    Float
   paidAmount        Float?
   pricePerHour      Float
@@ -48,10 +50,25 @@ model Job {
 }
 
 model JobType {
-  createdAt DateTime @default(now())
-  id        String   @id @default(cuid())
-  name      String   @unique
-  updatedAt DateTime @updatedAt
+  createdAt    DateTime        @default(now())
+  description  String
+  id           String          @id @default(cuid())
+  image        String?
+  jobs         Job[]
+  name         EnumJobTypeName
+  pricePerHour Float
+  updatedAt    DateTime        @updatedAt
+}
+
+model JobReport {
+  createdAt   DateTime               @default(now())
+  description String?
+  id          String                 @id @default(cuid())
+  job         Job?                   @relation(fields: [jobId], references: [id])
+  jobId       String?
+  jobStatus   EnumJobReportJobStatus
+  title       String
+  updatedAt   DateTime               @updatedAt
 }
 
 enum EnumUserGender {
@@ -72,8 +89,20 @@ enum EnumJobCurrentStatus {
   cancelled
 }
 
-enum EnumJobJobType {
+enum EnumJobTypeName {
   move
-  gardening
-  furnitureAssembly
+  gardnening
+  furnitureAssemby
+}
+
+enum EnumJobReportJobStatus {
+  submitted
+  accepted
+  applyble
+  ready
+  inProgress
+  aborted
+  interrupted
+  done
+  cancelled
 }

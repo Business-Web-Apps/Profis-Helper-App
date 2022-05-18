@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+import { JobReport } from "../jobReport/JobReport";
+import { JobType } from "../jobType/JobType";
+
+=======
+>>>>>>> main
 export type Job = {
   createdAt: Date;
   currentStatus?:
@@ -14,7 +20,12 @@ export type Job = {
   endDate: Date | null;
   estimatedDuration: number;
   id: string;
+<<<<<<< HEAD
+  jobReports?: Array<JobReport>;
+  jobType?: JobType | null;
+=======
   jobType?: "move" | "gardening" | "furnitureAssembly";
+>>>>>>> main
   numberOfHelper: number;
   paidAmount: number | null;
   pricePerHour: number;

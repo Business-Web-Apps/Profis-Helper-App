@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+import { JobReportUpdateManyWithoutJobsInput } from "./JobReportUpdateManyWithoutJobsInput";
+import { JobTypeWhereUniqueInput } from "../jobType/JobTypeWhereUniqueInput";
+
+=======
+>>>>>>> main
 export type JobUpdateInput = {
   currentStatus?:
     | "submitted"
@@ -12,7 +18,12 @@ export type JobUpdateInput = {
   description?: string;
   endDate?: Date | null;
   estimatedDuration?: number;
+<<<<<<< HEAD
+  jobReports?: JobReportUpdateManyWithoutJobsInput;
+  jobType?: JobTypeWhereUniqueInput | null;
+=======
   jobType?: "move" | "gardening" | "furnitureAssembly";
+>>>>>>> main
   numberOfHelper?: number;
   paidAmount?: number | null;
   pricePerHour?: number;

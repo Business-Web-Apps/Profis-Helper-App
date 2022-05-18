@@ -1,12 +1,27 @@
 import * as React from "react";
+<<<<<<< HEAD
+
+=======
+>>>>>>> main
 import {
   Show,
   SimpleShowLayout,
   ShowProps,
   DateField,
   TextField,
+<<<<<<< HEAD
+  ReferenceField,
+  ReferenceManyField,
+  Datagrid,
 } from "react-admin";
 
+import { JOB_TITLE_FIELD } from "./JobTitle";
+import { JOBTYPE_TITLE_FIELD } from "../jobType/JobTypeTitle";
+
+=======
+} from "react-admin";
+
+>>>>>>> main
 export const JobShow = (props: ShowProps): React.ReactElement => {
   return (
     <Show {...props}>
@@ -17,13 +32,39 @@ export const JobShow = (props: ShowProps): React.ReactElement => {
         <TextField label="EndDate" source="endDate" />
         <TextField label="EstimatedDuration" source="estimatedDuration" />
         <TextField label="ID" source="id" />
+<<<<<<< HEAD
+        <ReferenceField label="JobType" source="jobtype.id" reference="JobType">
+          <TextField source={JOBTYPE_TITLE_FIELD} />
+        </ReferenceField>
+=======
         <TextField label="JobType" source="jobType" />
+>>>>>>> main
         <TextField label="NumberOfHelper" source="numberOfHelper" />
         <TextField label="PaidAmount" source="paidAmount" />
         <TextField label="PricePerHour" source="pricePerHour" />
         <TextField label="StartDate" source="startDate" />
         <TextField label="Title" source="title" />
         <DateField source="updatedAt" label="Updated At" />
+<<<<<<< HEAD
+        <ReferenceManyField
+          reference="JobReport"
+          target="JobId"
+          label="JobReports"
+        >
+          <Datagrid rowClick="show">
+            <DateField source="createdAt" label="Created At" />
+            <TextField label="Description" source="description" />
+            <TextField label="ID" source="id" />
+            <ReferenceField label="Job" source="job.id" reference="Job">
+              <TextField source={JOB_TITLE_FIELD} />
+            </ReferenceField>
+            <TextField label="JobStatus" source="jobStatus" />
+            <TextField label="Title" source="title" />
+            <DateField source="updatedAt" label="Updated At" />
+          </Datagrid>
+        </ReferenceManyField>
+=======
+>>>>>>> main
       </SimpleShowLayout>
     </Show>
   );

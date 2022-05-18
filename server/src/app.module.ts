@@ -5,6 +5,7 @@ import { UserModule } from "./user/user.module";
 import { AddressModule } from "./address/address.module";
 import { JobModule } from "./job/job.module";
 import { JobTypeModule } from "./jobType/jobType.module";
+import { JobReportModule } from "./jobReport/jobReport.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
@@ -21,6 +22,7 @@ import { GraphQLModule } from "@nestjs/graphql";
     AddressModule,
     JobModule,
     JobTypeModule,
+    JobReportModule,
     ACLModule,
     AuthModule,
     HealthModule,

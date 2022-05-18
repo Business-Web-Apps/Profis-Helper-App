@@ -11,7 +11,16 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional } from "class-validator";
+import {
+  IsString,
+  IsOptional,
+  ValidateNested,
+  IsEnum,
+  IsNumber,
+} from "class-validator";
+import { JobUpdateManyWithoutJobTypesInput } from "./JobUpdateManyWithoutJobTypesInput";
+import { Type } from "class-transformer";
+import { EnumJobTypeName } from "./EnumJobTypeName";
 @InputType()
 class JobTypeUpdateInput {
   @ApiProperty({
@@ -23,6 +32,51 @@ class JobTypeUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
-  name?: string;
+  description?: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  image?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => JobUpdateManyWithoutJobTypesInput,
+  })
+  @ValidateNested()
+  @Type(() => JobUpdateManyWithoutJobTypesInput)
+  @IsOptional()
+  @Field(() => JobUpdateManyWithoutJobTypesInput, {
+    nullable: true,
+  })
+  jobs?: JobUpdateManyWithoutJobTypesInput;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumJobTypeName,
+  })
+  @IsEnum(EnumJobTypeName)
+  @IsOptional()
+  @Field(() => EnumJobTypeName, {
+    nullable: true,
+  })
+  name?: "move" | "gardnening" | "furnitureAssemby";
+
+  @ApiProperty({
+    required: false,
+    type: Number,
+  })
+  @IsNumber()
+  @IsOptional()
+  @Field(() => Number, {
+    nullable: true,
+  })
+  pricePerHour?: number;
 }
 export { JobTypeUpdateInput };

@@ -25,6 +25,12 @@ import { DeleteJobArgs } from "./DeleteJobArgs";
 import { JobFindManyArgs } from "./JobFindManyArgs";
 import { JobFindUniqueArgs } from "./JobFindUniqueArgs";
 import { Job } from "./Job";
+<<<<<<< HEAD
+import { JobReportFindManyArgs } from "../../jobReport/base/JobReportFindManyArgs";
+import { JobReport } from "../../jobReport/base/JobReport";
+import { JobType } from "../../jobType/base/JobType";
+=======
+>>>>>>> main
 import { JobService } from "../job.service";
 
 @graphql.Resolver(() => Job)
@@ -90,7 +96,19 @@ export class JobResolverBase {
   async createJob(@graphql.Args() args: CreateJobArgs): Promise<Job> {
     return await this.service.create({
       ...args,
+<<<<<<< HEAD
+      data: {
+        ...args.data,
+
+        jobType: args.data.jobType
+          ? {
+              connect: args.data.jobType,
+            }
+          : undefined,
+      },
+=======
       data: args.data,
+>>>>>>> main
     });
   }
 
@@ -105,7 +123,19 @@ export class JobResolverBase {
     try {
       return await this.service.update({
         ...args,
+<<<<<<< HEAD
+        data: {
+          ...args.data,
+
+          jobType: args.data.jobType
+            ? {
+                connect: args.data.jobType,
+              }
+            : undefined,
+        },
+=======
         data: args.data,
+>>>>>>> main
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -135,4 +165,43 @@ export class JobResolverBase {
       throw error;
     }
   }
+<<<<<<< HEAD
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [JobReport])
+  @nestAccessControl.UseRoles({
+    resource: "JobReport",
+    action: "read",
+    possession: "any",
+  })
+  async jobReports(
+    @graphql.Parent() parent: Job,
+    @graphql.Args() args: JobReportFindManyArgs
+  ): Promise<JobReport[]> {
+    const results = await this.service.findJobReports(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => JobType, { nullable: true })
+  @nestAccessControl.UseRoles({
+    resource: "JobType",
+    action: "read",
+    possession: "any",
+  })
+  async jobType(@graphql.Parent() parent: Job): Promise<JobType | null> {
+    const result = await this.service.getJobType(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+=======
+>>>>>>> main
 }
