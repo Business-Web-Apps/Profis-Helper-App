@@ -1,30 +1,30 @@
 [
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "User",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "User",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "User",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "User",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "User",
     "action": "read:any",
     "attributes": "*"
@@ -42,13 +42,13 @@
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Address",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Address",
     "action": "read:own",
     "attributes": "*"
@@ -66,13 +66,13 @@
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Address",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Address",
     "action": "create:any",
     "attributes": "*"
@@ -90,13 +90,13 @@
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Address",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Address",
     "action": "update:any",
     "attributes": "*"
@@ -114,13 +114,13 @@
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Address",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Address",
     "action": "delete:any",
     "attributes": "*"
@@ -138,13 +138,13 @@
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Address",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Address",
     "action": "read:any",
     "attributes": "*"
@@ -156,13 +156,13 @@
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Job",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Job",
     "action": "read:own",
     "attributes": "*"
@@ -174,13 +174,13 @@
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Job",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Job",
     "action": "create:any",
     "attributes": "*"
@@ -192,25 +192,25 @@
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Job",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Job",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Job",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Job",
     "action": "delete:any",
     "attributes": "*"
@@ -228,49 +228,49 @@
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Job",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Job",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "JobType",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "JobReport",
     "action": "read:own",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "JobReport",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "JobReport",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "JobReport",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "JobReport",
     "action": "read:any",
     "attributes": "*"
@@ -282,7 +282,7 @@
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Payment",
     "action": "read:own",
     "attributes": "*"
@@ -294,37 +294,37 @@
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Payment",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Payment",
     "action": "create:any",
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Payment",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Payment",
     "action": "update:any",
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Payment",
     "action": "delete:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Payment",
     "action": "delete:any",
     "attributes": "*"
@@ -336,13 +336,13 @@
     "attributes": "*"
   },
   {
-    "role": "employee",
+    "role": "user",
     "resource": "Payment",
     "action": "read:any",
     "attributes": "*"
   },
   {
-    "role": "manager",
+    "role": "admin",
     "resource": "Payment",
     "action": "read:any",
     "attributes": "*"

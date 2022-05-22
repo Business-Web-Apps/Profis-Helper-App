@@ -1,0 +1,627 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Address {
+  addressType: EnumAddressAddressType
+  city: String!
+  country: String!
+  createdAt: DateTime!
+  housNum: String!
+  id: String!
+  region: String!
+  streetName: String!
+  updatedAt: DateTime!
+  user: User
+}
+
+input AddressCreateInput {
+  addressType: EnumAddressAddressType!
+  city: String!
+  country: String!
+  housNum: String!
+  region: String!
+  streetName: String!
+  user: UserWhereUniqueInput
+}
+
+input AddressCreateNestedManyWithoutUsersInput {
+  connect: [AddressWhereUniqueInput!]
+}
+
+input AddressListRelationFilter {
+  every: AddressWhereInput
+  none: AddressWhereInput
+  some: AddressWhereInput
+}
+
+input AddressOrderByInput {
+  addressType: SortOrder
+  city: SortOrder
+  country: SortOrder
+  createdAt: SortOrder
+  housNum: SortOrder
+  id: SortOrder
+  region: SortOrder
+  streetName: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input AddressUpdateInput {
+  addressType: EnumAddressAddressType
+  city: String
+  country: String
+  housNum: String
+  region: String
+  streetName: String
+  user: UserWhereUniqueInput
+}
+
+input AddressUpdateManyWithoutUsersInput {
+  connect: [AddressWhereUniqueInput!]
+  disconnect: [AddressWhereUniqueInput!]
+  set: [AddressWhereUniqueInput!]
+}
+
+input AddressWhereInput {
+  addressType: EnumAddressAddressType
+  city: StringFilter
+  country: StringFilter
+  housNum: StringFilter
+  id: StringFilter
+  region: StringFilter
+  streetName: StringFilter
+  user: UserWhereUniqueInput
+}
+
+input AddressWhereUniqueInput {
+  id: String!
+}
+
+input Credentials {
+  password: String!
+  username: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+input DateTimeFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+input DateTimeNullableFilter {
+  equals: DateTime
+  gt: DateTime
+  gte: DateTime
+  in: [DateTime!]
+  lt: DateTime
+  lte: DateTime
+  not: DateTime
+  notIn: [DateTime!]
+}
+
+enum EnumAddressAddressType {
+  Invoice
+  Other
+  Personal
+}
+
+enum EnumJobCurrentStatus {
+  Aborted
+  Accepted
+  Applyable
+  Cancelled
+  Done
+  InProgress
+  Interrupted
+  Ready
+  Submitted
+}
+
+enum EnumJobReportJobStatus {
+  Aborted
+  Accepted
+  Applyble
+  Cancelled
+  Done
+  InProgress
+  Interrupted
+  Ready
+  Submitted
+}
+
+enum EnumJobTypeName {
+  FurnitureAssemby
+  Gardnening
+  Move
+}
+
+enum EnumPaymentMethod {
+  BankTransfer
+  CreditCard
+  Other
+  Paypal
+}
+
+enum EnumUserGender {
+  Female
+  Male
+  Others
+}
+
+input FloatFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: Float
+  notIn: [Float!]
+}
+
+input FloatNullableFilter {
+  equals: Float
+  gt: Float
+  gte: Float
+  in: [Float!]
+  lt: Float
+  lte: Float
+  not: Float
+  notIn: [Float!]
+}
+
+type Job {
+  createdAt: DateTime!
+  currentStatus: EnumJobCurrentStatus
+  description: String!
+  endDate: DateTime
+  estimatedDuration: Float!
+  id: String!
+  jobReports(orderBy: [JobReportOrderByInput!], skip: Float, take: Float, where: JobReportWhereInput): [JobReport!]!
+  jobType: JobType
+  numberOfHelper: Float!
+  paidAmount: Float
+  payments(orderBy: [PaymentOrderByInput!], skip: Float, take: Float, where: PaymentWhereInput): [Payment!]!
+  pricePerHour: Float!
+  startDate: DateTime!
+  title: String!
+  updatedAt: DateTime!
+}
+
+input JobCreateInput {
+  currentStatus: EnumJobCurrentStatus!
+  description: String!
+  endDate: DateTime
+  estimatedDuration: Float!
+  jobReports: JobReportCreateNestedManyWithoutJobsInput
+  jobType: JobTypeWhereUniqueInput
+  numberOfHelper: Float!
+  paidAmount: Float
+  payments: PaymentCreateNestedManyWithoutJobsInput
+  pricePerHour: Float!
+  startDate: DateTime!
+  title: String!
+}
+
+input JobCreateNestedManyWithoutJobTypesInput {
+  connect: [JobWhereUniqueInput!]
+}
+
+input JobListRelationFilter {
+  every: JobWhereInput
+  none: JobWhereInput
+  some: JobWhereInput
+}
+
+input JobOrderByInput {
+  createdAt: SortOrder
+  currentStatus: SortOrder
+  description: SortOrder
+  endDate: SortOrder
+  estimatedDuration: SortOrder
+  id: SortOrder
+  jobTypeId: SortOrder
+  numberOfHelper: SortOrder
+  paidAmount: SortOrder
+  pricePerHour: SortOrder
+  startDate: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+}
+
+type JobReport {
+  createdAt: DateTime!
+  description: String
+  id: String!
+  job: Job
+  jobStatus: EnumJobReportJobStatus
+  title: String!
+  updatedAt: DateTime!
+}
+
+input JobReportCreateInput {
+  description: String
+  job: JobWhereUniqueInput
+  jobStatus: EnumJobReportJobStatus!
+  title: String!
+}
+
+input JobReportCreateNestedManyWithoutJobsInput {
+  connect: [JobReportWhereUniqueInput!]
+}
+
+input JobReportListRelationFilter {
+  every: JobReportWhereInput
+  none: JobReportWhereInput
+  some: JobReportWhereInput
+}
+
+input JobReportOrderByInput {
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  jobId: SortOrder
+  jobStatus: SortOrder
+  title: SortOrder
+  updatedAt: SortOrder
+}
+
+input JobReportUpdateInput {
+  description: String
+  job: JobWhereUniqueInput
+  jobStatus: EnumJobReportJobStatus
+  title: String
+}
+
+input JobReportUpdateManyWithoutJobsInput {
+  connect: [JobReportWhereUniqueInput!]
+  disconnect: [JobReportWhereUniqueInput!]
+  set: [JobReportWhereUniqueInput!]
+}
+
+input JobReportWhereInput {
+  description: StringNullableFilter
+  id: StringFilter
+  job: JobWhereUniqueInput
+  jobStatus: EnumJobReportJobStatus
+  title: StringFilter
+}
+
+input JobReportWhereUniqueInput {
+  id: String!
+}
+
+type JobType {
+  createdAt: DateTime!
+  description: String!
+  id: String!
+  image: String
+  jobs(orderBy: [JobOrderByInput!], skip: Float, take: Float, where: JobWhereInput): [Job!]!
+  name: EnumJobTypeName
+  pricePerHour: Float!
+  updatedAt: DateTime!
+}
+
+input JobTypeCreateInput {
+  description: String!
+  image: String
+  jobs: JobCreateNestedManyWithoutJobTypesInput
+  name: EnumJobTypeName!
+  pricePerHour: Float!
+}
+
+input JobTypeOrderByInput {
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  image: SortOrder
+  name: SortOrder
+  pricePerHour: SortOrder
+  updatedAt: SortOrder
+}
+
+input JobTypeUpdateInput {
+  description: String
+  image: String
+  jobs: JobUpdateManyWithoutJobTypesInput
+  name: EnumJobTypeName
+  pricePerHour: Float
+}
+
+input JobTypeWhereInput {
+  description: StringFilter
+  id: StringFilter
+  image: StringNullableFilter
+  jobs: JobListRelationFilter
+  name: EnumJobTypeName
+  pricePerHour: FloatFilter
+}
+
+input JobTypeWhereUniqueInput {
+  id: String!
+}
+
+input JobUpdateInput {
+  currentStatus: EnumJobCurrentStatus
+  description: String
+  endDate: DateTime
+  estimatedDuration: Float
+  jobReports: JobReportUpdateManyWithoutJobsInput
+  jobType: JobTypeWhereUniqueInput
+  numberOfHelper: Float
+  paidAmount: Float
+  payments: PaymentUpdateManyWithoutJobsInput
+  pricePerHour: Float
+  startDate: DateTime
+  title: String
+}
+
+input JobUpdateManyWithoutJobTypesInput {
+  connect: [JobWhereUniqueInput!]
+  disconnect: [JobWhereUniqueInput!]
+  set: [JobWhereUniqueInput!]
+}
+
+input JobWhereInput {
+  currentStatus: EnumJobCurrentStatus
+  description: StringFilter
+  endDate: DateTimeNullableFilter
+  estimatedDuration: FloatFilter
+  id: StringFilter
+  jobReports: JobReportListRelationFilter
+  jobType: JobTypeWhereUniqueInput
+  numberOfHelper: FloatFilter
+  paidAmount: FloatNullableFilter
+  payments: PaymentListRelationFilter
+  pricePerHour: FloatFilter
+  startDate: DateTimeFilter
+  title: StringFilter
+}
+
+input JobWhereUniqueInput {
+  id: String!
+}
+
+type MetaQueryPayload {
+  count: Float!
+}
+
+type Mutation {
+  createAddress(data: AddressCreateInput!): Address!
+  createJob(data: JobCreateInput!): Job!
+  createJobReport(data: JobReportCreateInput!): JobReport!
+  createJobType(data: JobTypeCreateInput!): JobType!
+  createPayment(data: PaymentCreateInput!): Payment!
+  createUser(data: UserCreateInput!): User!
+  deleteAddress(where: AddressWhereUniqueInput!): Address!
+  deleteJob(where: JobWhereUniqueInput!): Job!
+  deleteJobReport(where: JobReportWhereUniqueInput!): JobReport!
+  deleteJobType(where: JobTypeWhereUniqueInput!): JobType!
+  deletePayment(where: PaymentWhereUniqueInput!): Payment!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  login(credentials: Credentials!): UserInfo!
+  updateAddress(data: AddressUpdateInput!, where: AddressWhereUniqueInput!): Address!
+  updateJob(data: JobUpdateInput!, where: JobWhereUniqueInput!): Job!
+  updateJobReport(data: JobReportUpdateInput!, where: JobReportWhereUniqueInput!): JobReport!
+  updateJobType(data: JobTypeUpdateInput!, where: JobTypeWhereUniqueInput!): JobType!
+  updatePayment(data: PaymentUpdateInput!, where: PaymentWhereUniqueInput!): Payment!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
+type Payment {
+  amount: Float!
+  createdAt: DateTime!
+  id: String!
+  job: Job
+  method: EnumPaymentMethod
+  updatedAt: DateTime!
+  user: User
+}
+
+input PaymentCreateInput {
+  amount: Float!
+  job: JobWhereUniqueInput!
+  method: EnumPaymentMethod
+  user: UserWhereUniqueInput!
+}
+
+input PaymentCreateNestedManyWithoutJobsInput {
+  connect: [PaymentWhereUniqueInput!]
+}
+
+input PaymentCreateNestedManyWithoutUsersInput {
+  connect: [PaymentWhereUniqueInput!]
+}
+
+input PaymentListRelationFilter {
+  every: PaymentWhereInput
+  none: PaymentWhereInput
+  some: PaymentWhereInput
+}
+
+input PaymentOrderByInput {
+  amount: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  jobId: SortOrder
+  method: SortOrder
+  updatedAt: SortOrder
+  userId: SortOrder
+}
+
+input PaymentUpdateInput {
+  amount: Float
+  job: JobWhereUniqueInput
+  method: EnumPaymentMethod
+  user: UserWhereUniqueInput
+}
+
+input PaymentUpdateManyWithoutJobsInput {
+  connect: [PaymentWhereUniqueInput!]
+  disconnect: [PaymentWhereUniqueInput!]
+  set: [PaymentWhereUniqueInput!]
+}
+
+input PaymentUpdateManyWithoutUsersInput {
+  connect: [PaymentWhereUniqueInput!]
+  disconnect: [PaymentWhereUniqueInput!]
+  set: [PaymentWhereUniqueInput!]
+}
+
+input PaymentWhereInput {
+  amount: FloatFilter
+  id: StringFilter
+  job: JobWhereUniqueInput
+  method: EnumPaymentMethod
+  user: UserWhereUniqueInput
+}
+
+input PaymentWhereUniqueInput {
+  id: String!
+}
+
+type Query {
+  _addressesMeta(orderBy: [AddressOrderByInput!], skip: Float, take: Float, where: AddressWhereInput): MetaQueryPayload!
+  _jobReportsMeta(orderBy: [JobReportOrderByInput!], skip: Float, take: Float, where: JobReportWhereInput): MetaQueryPayload!
+  _jobTypesMeta(orderBy: [JobTypeOrderByInput!], skip: Float, take: Float, where: JobTypeWhereInput): MetaQueryPayload!
+  _jobsMeta(orderBy: [JobOrderByInput!], skip: Float, take: Float, where: JobWhereInput): MetaQueryPayload!
+  _paymentsMeta(orderBy: [PaymentOrderByInput!], skip: Float, take: Float, where: PaymentWhereInput): MetaQueryPayload!
+  _usersMeta(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): MetaQueryPayload!
+  address(where: AddressWhereUniqueInput!): Address
+  addresses(orderBy: [AddressOrderByInput!], skip: Float, take: Float, where: AddressWhereInput): [Address!]!
+  job(where: JobWhereUniqueInput!): Job
+  jobReport(where: JobReportWhereUniqueInput!): JobReport
+  jobReports(orderBy: [JobReportOrderByInput!], skip: Float, take: Float, where: JobReportWhereInput): [JobReport!]!
+  jobType(where: JobTypeWhereUniqueInput!): JobType
+  jobTypes(orderBy: [JobTypeOrderByInput!], skip: Float, take: Float, where: JobTypeWhereInput): [JobType!]!
+  jobs(orderBy: [JobOrderByInput!], skip: Float, take: Float, where: JobWhereInput): [Job!]!
+  payment(where: PaymentWhereUniqueInput!): Payment
+  payments(orderBy: [PaymentOrderByInput!], skip: Float, take: Float, where: PaymentWhereInput): [Payment!]!
+  user(where: UserWhereUniqueInput!): User
+  userInfo: UserInfo!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+type User {
+  addresses(orderBy: [AddressOrderByInput!], skip: Float, take: Float, where: AddressWhereInput): [Address!]!
+  createdAt: DateTime!
+  email: String!
+  firstName: String
+  gender: EnumUserGender
+  id: String!
+  lastName: String
+  payments(orderBy: [PaymentOrderByInput!], skip: Float, take: Float, where: PaymentWhereInput): [Payment!]!
+  roles: [String!]!
+  updatedAt: DateTime!
+  username: String!
+}
+
+input UserCreateInput {
+  addresses: AddressCreateNestedManyWithoutUsersInput
+  email: String!
+  firstName: String
+  gender: EnumUserGender
+  lastName: String
+  password: String!
+  payments: PaymentCreateNestedManyWithoutUsersInput
+  roles: [String!]!
+  username: String!
+}
+
+type UserInfo {
+  accessToken: String
+  roles: [String!]!
+  username: String!
+}
+
+input UserOrderByInput {
+  createdAt: SortOrder
+  email: SortOrder
+  firstName: SortOrder
+  gender: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  password: SortOrder
+  roles: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  addresses: AddressUpdateManyWithoutUsersInput
+  email: String
+  firstName: String
+  gender: EnumUserGender
+  lastName: String
+  password: String
+  payments: PaymentUpdateManyWithoutUsersInput
+  roles: [String!]
+  username: String
+}
+
+input UserWhereInput {
+  addresses: AddressListRelationFilter
+  email: StringFilter
+  firstName: StringNullableFilter
+  gender: EnumUserGender
+  id: StringFilter
+  lastName: StringNullableFilter
+  payments: PaymentListRelationFilter
+  username: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}
