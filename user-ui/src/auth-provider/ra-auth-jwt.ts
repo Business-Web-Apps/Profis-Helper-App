@@ -1,5 +1,4 @@
 import { ApolloClient, InMemoryCache, gql } from "@apollo/client/core";
-import { AuthProvider } from "react-admin";
 import {
   CREDENTIALS_LOCAL_STORAGE_ITEM,
   USER_DATA_LOCAL_STORAGE_ITEM,
@@ -15,7 +14,7 @@ const LOGIN = gql`
   }
 `;
 
-export const jwtAuthProvider: AuthProvider = {
+export const jwtAuthProvider = {
   login: async (credentials: Credentials) => {
     const apolloClient = new ApolloClient({
       uri: "/graphql",
