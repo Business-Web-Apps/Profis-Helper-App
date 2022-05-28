@@ -145,6 +145,7 @@ enum EnumJobTypeName {
   FurnitureAssemby
   Gardnening
   Move
+  Other
 }
 
 enum EnumPaymentMethod {

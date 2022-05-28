@@ -8,6 +8,6 @@ export type JobTypeWhereInput = {
   id?: StringFilter;
   image?: StringNullableFilter;
   jobs?: JobListRelationFilter;
-  name?: "move" | "gardnening" | "furnitureAssemby";
+  name?: "Move" | "Gardnening" | "FurnitureAssemby" | "Other";
   pricePerHour?: FloatFilter;
 };

@@ -7,14 +7,14 @@ export type JobReportWhereInput = {
   id?: StringFilter;
   job?: JobWhereUniqueInput;
   jobStatus?:
-    | "submitted"
-    | "accepted"
-    | "applyble"
-    | "ready"
-    | "inProgress"
-    | "aborted"
-    | "interrupted"
-    | "done"
-    | "cancelled";
+    | "Submitted"
+    | "Accepted"
+    | "Applyble"
+    | "Ready"
+    | "InProgress"
+    | "Aborted"
+    | "Interrupted"
+    | "Done"
+    | "Cancelled";
   title?: StringFilter;
 };

@@ -1,5 +1,6 @@
 export enum EnumJobJobType {
-  Move = "move",
-  Gardening = "gardening",
-  FurnitureAssembly = "furnitureAssembly",
+  Move = "Move",
+  Gardening = "Gardening",
+  FurnitureAssembly = "FurnitureAssembly",
+  Other = "Other"
 }

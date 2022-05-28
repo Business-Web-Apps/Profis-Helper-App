@@ -4,27 +4,15 @@ export const ROLES = [
     displayName: "Helper",
   },
   {
-    name: "externUser",
-    displayName: "ExternUser",
+    name: "customer",
+    displayName: "Customer",
   },
   {
     name: "user",
     displayName: "User",
   },
   {
-    name: "manager",
+    name: "admin",
     displayName: "Manager",
-  },
-  {
-    name: "employee",
-    displayName: "Employee",
-  },
-  {
-    name: "superUser",
-    displayName: "SuperUser",
-  },
-  {
-    name: "customer",
-    displayName: "Customer",
-  },
+  }
 ];

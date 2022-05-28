@@ -4,15 +4,15 @@ import { PaymentCreateNestedManyWithoutJobsInput } from "./PaymentCreateNestedMa
 
 export type JobCreateInput = {
   currentStatus:
-    | "submitted"
-    | "accepted"
-    | "applyable"
-    | "ready"
-    | "inProgress"
-    | "aborted"
-    | "interrupted"
-    | "done"
-    | "cancelled";
+    | "Submitted"
+    | "Accepted"
+    | "Applyable"
+    | "Ready"
+    | "InProgress"
+    | "Aborted"
+    | "Interrupted"
+    | "Done"
+    | "Cancelled";
   description: string;
   endDate?: Date | null;
   estimatedDuration: number;

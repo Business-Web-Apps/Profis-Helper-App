@@ -1,350 +1,123 @@
-[
-  {
-    "role": "admin",
-    "resource": "User",
-    "action": "read:own",
-    "attributes": "*"
+{
+  "admin": {
+    "User": {
+      "read:any": ["*", "!password"],
+      "create:any": ["*"],
+      "update:own": ["*"],
+      "delete:any": ["*"]
+    },
+    "Address": {
+      "read:any": ["*"],
+      "create:any": ["*"],
+      "update:any": ["*"],
+      "delete:any": ["*"]
+    },
+    "JobType": {
+      "read:any": ["*"],
+      "create:any": ["*"],
+      "update:any": ["*"],
+      "delete:any": ["*"]
+    },
+    "Job": {
+      "read:any": ["*"],
+      "create:any": ["*"],
+      "update:any": ["*"],
+      "delete:any": ["*"]
+    },
+    "JobReport": {
+      "read:any": ["*"],
+      "create:any": ["*"],
+      "update:any": ["*"],
+      "delete:any": ["*"]
+    },
+    "payment": {
+      "read:any": ["*"],
+      "create:any": ["*"],
+      "update:any": ["*"],
+      "delete:any": ["*"]
+    }
   },
-  {
-    "role": "admin",
-    "resource": "User",
-    "action": "create:any",
-    "attributes": "*"
+  "user": {
+    "User": {
+      "read:any": ["*", "!password"],
+      "create:any": ["*"],
+      "update:own": ["*"]
+    },
+    "Address": {
+      "read:any": ["*"],
+      "create:any": ["*"],
+      "update:own": ["*"],
+      "delete:own": ["*"]
+    },
+    "JobType": {
+      "read:any": ["*"],
+      "create:any": ["*"],
+      "update:any": ["*"],
+      "delete:any": ["*"]
+    },
+    "Job": {
+      "read:any": ["*"],
+      "create:any": ["*"],
+      "update:any": ["*"],
+      "delete:any": ["*"]
+    },
+    "JobReport": {
+      "read:any": ["*"],
+      "create:any": ["*"],
+      "update:own": ["*"]
+    },
+    "payment": {
+      "read:any": ["*"],
+      "create:any": ["*"],
+      "update:own": ["*"]
+    }
   },
-  {
-    "role": "admin",
-    "resource": "User",
-    "action": "update:any",
-    "attributes": "*"
+  "helper": {
+    "User": {
+      "read:own": ["*", "!password"],
+      "create:any": ["*"],
+      "update:own": ["*"]
+    },
+    "Address": {
+      "read:own": ["*"],
+      "create:any": ["*"],
+      "update:own": ["*"],
+      "delete:own": ["*"]
+    },
+    "Job": {
+      "read:any": ["*"]
+    },
+    "JobReport": {
+      "read:own": ["*"],
+      "create:any": ["*"]
+    }
   },
-  {
-    "role": "admin",
-    "resource": "User",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "User",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "helper",
-    "resource": "Address",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "customer",
-    "resource": "Address",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Address",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Address",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "helper",
-    "resource": "Address",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "customer",
-    "resource": "Address",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Address",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Address",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "helper",
-    "resource": "Address",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "customer",
-    "resource": "Address",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Address",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Address",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "helper",
-    "resource": "Address",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "customer",
-    "resource": "Address",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Address",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Address",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "helper",
-    "resource": "Address",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "customer",
-    "resource": "Address",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Address",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Address",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "customer",
-    "resource": "Job",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Job",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Job",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "customer",
-    "resource": "Job",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Job",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Job",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "customer",
-    "resource": "Job",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Job",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Job",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Job",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Job",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "helper",
-    "resource": "Job",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "customer",
-    "resource": "Job",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Job",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Job",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "JobType",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "JobReport",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "JobReport",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "JobReport",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "JobReport",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "JobReport",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "customer",
-    "resource": "Payment",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Payment",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "customer",
-    "resource": "Payment",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Payment",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Payment",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Payment",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Payment",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Payment",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Payment",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "customer",
-    "resource": "Payment",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "user",
-    "resource": "Payment",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "admin",
-    "resource": "Payment",
-    "action": "read:any",
-    "attributes": "*"
+  "customer": {
+    "User": {
+      "read:any": ["*", "!password"],
+      "create:any": ["*"],
+      "update:any": ["*"],
+      "delete:any": ["*"]
+    },
+    "Address": {
+      "read:own": ["*"],
+      "create:any": ["*"],
+      "update:own": ["*"],
+      "delete:own": ["*"]
+    },
+    "Job": {
+      "read:own": ["*"],
+      "create:any": ["*"],
+      "update:own": ["*"]
+    },
+    "JobReport": {
+      "read:own": ["*"],
+      "create:any": ["*"]
+    },
+    "payment": {
+      "read:own": ["*"],
+      "create:any": ["*"],
+      "update:own": ["*"]
+    }
   }
-]
+}

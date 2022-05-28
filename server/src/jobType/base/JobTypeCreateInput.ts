@@ -60,7 +60,7 @@ class JobTypeCreateInput {
   })
   @IsEnum(EnumJobTypeName)
   @Field(() => EnumJobTypeName)
-  name!: "move" | "gardnening" | "furnitureAssemby";
+  name!: "move" | "gardnening" | "furnitureAssemby" | "other";
 
   @ApiProperty({
     required: true,

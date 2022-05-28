@@ -31,9 +31,10 @@ export const JobTypeCreate = (props: CreateProps): React.ReactElement => {
           source="name"
           label="Name"
           choices={[
-            { label: "Move", value: "move" },
-            { label: "Gardnening", value: "gardnening" },
-            { label: "Furniture Assemby", value: "furnitureAssemby" },
+            { label: "Move", value: "Move" },
+            { label: "Gardnening", value: "Gardnening" },
+            { label: "Furniture Assemby", value: "FurnitureAssemby" },
+            { label: "Other", value: "Other" },
           ]}
           optionText="label"
           optionValue="value"

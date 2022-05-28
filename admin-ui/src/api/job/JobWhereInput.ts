@@ -9,15 +9,15 @@ import { DateTimeFilter } from "../../util/DateTimeFilter";
 
 export type JobWhereInput = {
   currentStatus?:
-    | "submitted"
-    | "accepted"
-    | "applyable"
-    | "ready"
-    | "inProgress"
-    | "aborted"
-    | "interrupted"
-    | "done"
-    | "cancelled";
+    | "Submitted"
+    | "Accepted"
+    | "Applyable"
+    | "Ready"
+    | "InProgress"
+    | "Aborted"
+    | "Interrupted"
+    | "Done"
+    | "Cancelled";
   description?: StringFilter;
   endDate?: DateTimeNullableFilter;
   estimatedDuration?: FloatFilter;

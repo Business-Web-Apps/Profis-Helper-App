@@ -25,15 +25,15 @@ export const JobEdit = (props: EditProps): React.ReactElement => {
           source="currentStatus"
           label="CurrentStatus"
           choices={[
-            { label: "Submitted", value: "submitted" },
-            { label: "Accepted", value: "accepted" },
-            { label: "Applyable", value: "applyable" },
-            { label: "Ready", value: "ready" },
-            { label: "In Progress", value: "inProgress" },
-            { label: "Aborted", value: "aborted" },
-            { label: "Interrupted", value: "interrupted" },
-            { label: "Done", value: "done" },
-            { label: "Cancelled", value: "cancelled" },
+            { label: "Submitted", value: "Submitted" },
+            { label: "Accepted", value: "Accepted" },
+            { label: "Applyable", value: "Applyable" },
+            { label: "Ready", value: "Ready" },
+            { label: "In Progress", value: "InProgress" },
+            { label: "Aborted", value: "Aborted" },
+            { label: "Interrupted", value: "Interrupted" },
+            { label: "Done", value: "Done" },
+            { label: "Cancelled", value: "Cancelled" },
           ]}
           optionText="label"
           optionValue="value"

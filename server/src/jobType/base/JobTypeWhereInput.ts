@@ -74,7 +74,7 @@ class JobTypeWhereInput {
   @Field(() => EnumJobTypeName, {
     nullable: true,
   })
-  name?: "move" | "gardnening" | "furnitureAssemby";
+  name?: "move" | "gardnening" | "furnitureAssemby" | "other";
 
   @ApiProperty({
     required: false,

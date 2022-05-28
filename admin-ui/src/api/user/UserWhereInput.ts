@@ -7,7 +7,7 @@ export type UserWhereInput = {
   addresses?: AddressListRelationFilter;
   email?: StringFilter;
   firstName?: StringNullableFilter;
-  gender?: "m" | "f" | "o";
+  gender?: "Male" | "Female" | "Others";
   id?: StringFilter;
   lastName?: StringNullableFilter;
   payments?: PaymentListRelationFilter;

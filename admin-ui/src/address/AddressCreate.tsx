@@ -17,9 +17,9 @@ export const AddressCreate = (props: CreateProps): React.ReactElement => {
           source="addressType"
           label="AddressType"
           choices={[
-            { label: "Invoice", value: "invoice" },
-            { label: "Personal", value: "personal" },
-            { label: "Other", value: "other" },
+            { label: "Invoice", value: "Invoice" },
+            { label: "Personal", value: "Personal" },
+            { label: "Other", value: "Other" },
           ]}
           optionText="label"
           optionValue="value"

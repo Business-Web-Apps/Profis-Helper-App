@@ -15,6 +15,7 @@ export enum EnumJobTypeName {
   Move = "move",
   Gardnening = "gardnening",
   FurnitureAssemby = "furnitureAssemby",
+  Other = "other",
 }
 
 registerEnumType(EnumJobTypeName, {

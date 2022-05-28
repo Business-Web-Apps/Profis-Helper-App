@@ -6,7 +6,7 @@ export type JobType = {
   id: string;
   image: string | null;
   jobs?: Array<Job>;
-  name?: "move" | "gardnening" | "furnitureAssemby";
+  name?: "Move" | "Gardnening" | "FurnitureAssemby" | "Other";
   pricePerHour: number;
   updatedAt: Date;
 };

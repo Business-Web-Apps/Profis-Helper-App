@@ -8,7 +8,7 @@ CREATE TYPE "EnumAddressAddressType" AS ENUM ('invoice', 'personal', 'other');
 CREATE TYPE "EnumJobCurrentStatus" AS ENUM ('submitted', 'accepted', 'applyable', 'ready', 'inProgress', 'aborted', 'interrupted', 'done', 'cancelled');
 
 -- CreateEnum
-CREATE TYPE "EnumJobTypeName" AS ENUM ('move', 'gardnening', 'furnitureAssemby');
+CREATE TYPE "EnumJobTypeName" AS ENUM ('move', 'gardnening', 'furnitureAssemby', 'other');
 
 -- CreateEnum
 CREATE TYPE "EnumJobReportJobStatus" AS ENUM ('submitted', 'accepted', 'applyble', 'ready', 'inProgress', 'aborted', 'interrupted', 'done', 'cancelled');

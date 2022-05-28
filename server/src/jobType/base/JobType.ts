@@ -76,7 +76,7 @@ class JobType {
   @Field(() => EnumJobTypeName, {
     nullable: true,
   })
-  name?: "move" | "gardnening" | "furnitureAssemby";
+  name?: "move" | "gardnening" | "furnitureAssemby" | "other";
 
   @ApiProperty({
     required: true,

@@ -6,15 +6,15 @@ export type JobReport = {
   id: string;
   job?: Job | null;
   jobStatus?:
-    | "submitted"
-    | "accepted"
-    | "applyble"
-    | "ready"
-    | "inProgress"
-    | "aborted"
-    | "interrupted"
-    | "done"
-    | "cancelled";
+    | "Submitted"
+    | "Accepted"
+    | "Applyble"
+    | "Ready"
+    | "InProgress"
+    | "Aborted"
+    | "Interrupted"
+    | "Done"
+    | "Cancelled";
   title: string;
   updatedAt: Date;
 };

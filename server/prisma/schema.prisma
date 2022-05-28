@@ -114,6 +114,7 @@ enum EnumJobCurrentStatus {
 }
 
 enum EnumJobTypeName {
+  other
   move
   gardnening
   furnitureAssemby

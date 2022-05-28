@@ -5,7 +5,7 @@ export type UserUpdateInput = {
   addresses?: AddressUpdateManyWithoutUsersInput;
   email?: string;
   firstName?: string | null;
-  gender?: "m" | "f" | "o" | null;
+  gender?: "Male" | "Female" | "Others" | null;
   lastName?: string | null;
   password?: string;
   payments?: PaymentUpdateManyWithoutUsersInput;
