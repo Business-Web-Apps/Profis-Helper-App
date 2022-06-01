@@ -23,7 +23,7 @@ function AppAppBar() {
             href="/"
             sx={{ fontSize: 24 }}
           >
-            {'ProfisHelper'}
+            {'ProfisHelfer'}
           </Link>
           <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
             <Link
