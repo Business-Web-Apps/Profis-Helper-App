@@ -104,7 +104,7 @@ function SignIn() {
           )}
         </Form>
         <Typography align="center">
-          <Link underline="always" href="/sign-in">
+          <Link underline="always" href="/reset-pass">
             Forgot password?
           </Link>
         </Typography>
