@@ -14,7 +14,7 @@ The Admin-UI frontend was developped with ReactJs and is based on the [react-adm
 
 ### [User UI](./user-ui/README.md)
 
-The Admin-UI frontend was developped with ReactJs and is based on the [Material-UI](https://mui.com/material-ui/getting-started/) and will be used by potential clients and helpers
+The User-UI frontend was developped with ReactJs and is based on the [Material-UI](https://mui.com/material-ui/getting-started/) and will be used by potential clients and helpers
 ### Learn more
 
 This project was generated using amplication. You can learn more in the [Amplication documentation](https://docs.amplication.com/guides/getting-started).
