@@ -1,6 +1,6 @@
 # User UI React Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), and built with [react-admin](https://marmelab.com/react-admin/)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), and built with [Material-UI](https://mui.com/material-ui/getting-started/installation/)
 
 ## Available Scripts
 
