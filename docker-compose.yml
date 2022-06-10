@@ -1,10 +1,73 @@
 version: "3"
 services:
+
+#####################################
+#   Setup reverse proxy container   #
+#####################################
+  reverse-proxy:
+    image: valian/docker-nginx-auto-ssl:latest
+    container_name: reverse-proxy
+    restart: on-failure
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./.ssl-data:/etc/resty-auto-ssl
+    environment:
+      ALLOWED_DOMAINS: '(app|admin)localhost'
+      SITES: 'app.localhost=user-ui:80;admin.localhost=admin-ui:80'
+      FORCE_HTTPS: "true"
+    depends_on:
+      - user-ui
+      - admin-ui
+###############################
+#   Setup user-UI container   #
+###############################
+  user-ui:
+    build:  
+      context: ./user-ui
+      dockerfile: Dockerfile
+      args:
+        NPM_LOG_LEVEL: silent
+    container_name: user-ui
+    volumes:
+      - ./user-ui:/app
+      - ./user-ui/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - ${USER_UI_PORT}:80
+    depends_on:
+      - server
+###############################
+#   Setup admin-UI container  #
+###############################
+  admin-ui:
+    build:
+      context: ./admin-ui
+      dockerfile: Dockerfile
+      args:
+        NPM_LOG_LEVEL: silent
+    container_name: admin-ui
+    volumes:
+      - ./admin-ui:/app
+      - ./admin-ui/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - ${ADMIN_UI_PORT}:80
+    depends_on:
+      - server
+###############################
+#   Setup server container    #
+###############################
   server:
     build:
-      context: .
+      context: ./server
+      dockerfile: Dockerfile
       args:
-        NPM_LOG_LEVEL: notice
+        NPM_LOG_LEVEL: silent
+    container_name: server
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+      - /app/prisma
     ports:
       - "${SERVER_PORT}:3000"
     environment:
@@ -13,21 +76,37 @@ services:
       JWT_SECRET_KEY: "${JWT_SECRET_KEY}"
       JWT_EXPIRATION: "${JWT_EXPIRATION}"
     depends_on:
-      - migrate
-  migrate:
+      - migration
+    links:
+      - db
+###############################
+#   Setup migration service   #
+###############################
+  migration:
     build:
-      context: .
+      context: ./server
+      dockerfile: Dockerfile.prisma.dev
       args:
         NPM_LOG_LEVEL: notice
-    command: npm run db:init
-    working_dir: /app/server
+    container_name: migration
+    volumes:
+      - /app/node_modules
+      - /app/prisma
     environment:
       POSTGRESQL_URL: "postgres://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@db:5432"
       BCRYPT_SALT: "${BCRYPT_SALT}"
     depends_on:
       - db
+    links:
+      - db
+###############################
+#     Setup db container      #
+###############################
   db:
     image: postgres:12
+    container_name: db
+    ports:
+      - "${POSTGRESQL_PORT}:5432"
     environment:
       POSTGRES_USER: ${POSTGRESQL_USER}
       POSTGRES_PASSWORD: ${POSTGRESQL_PASSWORD}
@@ -35,3 +114,4 @@ services:
       - postgres:/var/lib/postgresql/data
 volumes:
   postgres: ~
+  .ssl-data:

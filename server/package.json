@@ -3,9 +3,10 @@
   "private": true,
   "scripts": {
     "start": "nest start",
-    "start:init": "npm run prisma:generate && npm run docker:db && npm run db:clean && npm run db:init && npm run start:watch",
     "start:watch": "nest start --watch",
     "start:debug": "nest start --debug --watch",
+    "start:init": "npm run prisma:generate && npm run docker:db && npm run db:clean && npm run db:init && npm run start",
+    "start:init:debug": "npm run prisma:generate && npm run docker:db && npm run db:clean && npm run db:init && npm run start:debug",
     "build": "nest build",
     "test": "jest",
     "seed": "ts-node scripts/seed.ts",
