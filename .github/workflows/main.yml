@@ -12,14 +12,14 @@ jobs:
     name: Deploy Postgres DB service to DockerHub
     runs-on: ubuntu-latest
     # Docker Hub image that `postgres-job` executes in
-    container: node:16
+    container: node:10.18-jessie
 
     # Service containers to run with `runner-job`
     services:
       # Label used to access the service container
       db:
         # Docker Hub image
-        image: postgres:latest
+        image: postgres:12
         # Provide the password for postgres
         env:
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
