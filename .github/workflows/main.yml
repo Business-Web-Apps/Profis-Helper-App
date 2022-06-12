@@ -17,14 +17,14 @@ jobs:
     # Service containers to run with `runner-job`
     services:
       # Label used to access the service container
-      postgres:
+      db:
         # Docker Hub image
         image: postgres:12
         # Provide the password for postgres
         env:
-          POSTGRES\_DB: ${{ secrets.POSTGRES_DB }}
-          POSTGRES\_USER: ${{ secrets.POSTGRES_USER }}
-          POSTGRES\_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
@@ -34,6 +34,8 @@ jobs:
         ports:
           # Maps tcp port 5432 on service container to the host
           - 5432:5432
+        volumes:
+          - postgres:/var/lib/postgresql/data
     steps:
       - name: Install PostgreSQL client
         run: |
