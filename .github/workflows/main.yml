@@ -15,10 +15,10 @@ jobs:
         working-directory: server
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '16.x'
           cache: 'npm'
       - run: npm ci
       - run: npm run prisma:generate
@@ -33,12 +33,13 @@ jobs:
         working-directory: user-uipn
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '16.x'
           cache: 'npm'
       - run: npm ci
+      - run: npm run prisma:generate
       - run: npm run build --if-present
       - run: npm test
  
@@ -50,12 +51,13 @@ jobs:
         working-directory: admin-ui
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '16.x'
           cache: 'npm'
       - run: npm ci
+      - run: npm run prisma:generate
       - run: npm run build --if-present
       - run: npm test
 
