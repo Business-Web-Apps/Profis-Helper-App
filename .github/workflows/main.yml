@@ -8,7 +8,7 @@ on:
       - main
 jobs:
   Build-server: 
-    name: Build and Test UI (CI)
+    name: Build and Test Server Backend (CI)
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -49,7 +49,7 @@ jobs:
       - run: npm test
  
   Build-admin-ui: 
-    name: Build and Test User-UI (CI)
+    name: Build and Test Admin-UI (CI)
     runs-on: ubuntu-latest
     defaults:
       run:
