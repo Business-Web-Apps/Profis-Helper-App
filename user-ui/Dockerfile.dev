@@ -21,4 +21,5 @@ RUN npm ci --loglevel=$NPM_LOG_LEVEL
 # Copy all the files
 COPY . .
 
+EXPOSE 3002
 CMD ["npm", "run", "start"]

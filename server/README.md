@@ -34,12 +34,7 @@ npm install
 
 ```
 npm run prisma:generate
-```
 
-- Start database in Docker
-
-```
-npm run docker:db
 ```
 
 - Initiate the database
