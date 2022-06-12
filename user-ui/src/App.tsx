@@ -1,24 +1,27 @@
 import * as React from 'react';
-import AllServices from './modules/views/AllServices';
-import ServiceSmokingHero from './modules/views/ServiceSmokingHero';
-import AppFooter from './modules/views/AppFooter';
-import ServiceShortList from './modules/views/ServiceShortList';
-import ServiceHowItWorks from './modules/views/ServiceHowItWorks';
-import ServiceNewsLetter from './modules/views/ServiceNewsLetter';
-import AppAppBar from './modules/views/AppAppBar';
+import { Routes, Route } from 'react-router-dom'
+import Home from './modules/views/Home';
 import withRoot from './modules/withRoot';
+import NotFoundPage from './NotFoundPage';
+import SignUp from './SignUp';
+import SignIn from './SignIn';
+import ForgotPassword from './ForgotPassword';
+import Terms from './Terms';
+import Privacy from './Privacy';
 
 function Index() {
   return (
-    <React.Fragment>
-      <AppAppBar />
-      <ServiceShortList />
-      <AllServices />
-      <ServiceHowItWorks />
-      <ServiceNewsLetter />
-      <ServiceSmokingHero />
-      <AppFooter />
-    </React.Fragment>
+    <>
+      <Routes>
+        <Route path="*" element={<NotFoundPage />}/>
+        <Route path='/' element={<Home />}/>
+        <Route path="/sign-up" element={<SignUp />}/>
+        <Route path="/sign-in" element={<SignIn />}/>
+        <Route path="/reset-pass" element={<ForgotPassword/>} />
+        <Route path="/terms" element={<Terms />}/>
+        <Route path="/privacy" element={<Privacy />}/>
+      </Routes>
+    </>
   );
 }
 

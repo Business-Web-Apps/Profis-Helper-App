@@ -1,7 +1,15 @@
 Profis Helper Front- & Backend applications. 
 This solution is builded with React (UI) and NestJs (Backend).
 
-It consists of two packages:
+### Start the entire project in dev mode
+
+Run the following command to start this project in developer mode (User-UI, Admin-UI, Server and DB):
+
+`docker-compose -f docker-compose.dev.yml up --build`
+
+The configs for the production mode are still in progress.
+
+This solution consists of two packages:
 
 ### [Server](./server/README.md)
 
