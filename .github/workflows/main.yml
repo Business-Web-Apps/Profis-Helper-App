@@ -12,7 +12,7 @@ jobs:
     name: Deploy Postgres DB service to DockerHub
     runs-on: ubuntu-latest
     # Docker Hub image that `postgres-job` executes in
-    container: node:10.18-jessie
+    container: node:16
 
     # Service containers to run with `runner-job`
     services:
@@ -24,7 +24,7 @@ jobs:
         env:
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_PASSWORD: postgres
           POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
         # Set health checks to wait until postgres has started
         options: >-
