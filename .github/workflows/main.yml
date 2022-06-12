@@ -19,12 +19,13 @@ jobs:
       # Label used to access the service container
       db:
         # Docker Hub image
-        image: postgres:12
+        image: postgres:latest
         # Provide the password for postgres
         env:
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
           POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+          POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
