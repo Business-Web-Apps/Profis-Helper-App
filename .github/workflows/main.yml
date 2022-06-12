@@ -52,18 +52,18 @@ jobs:
           POSTGRESQL_USER: ${{ secrets.POSTGRESQL_USER }}
           POSTGRESQL_PASSWORD: ${{ secrets.POSTGRESQL_PASSWORD }}
           POSTGRESQL_PORT: ${{ secrets.POSTGRESQL_PORT }}
-          POSTGRESQL_URL: postgres://${{ secrets.POSTGRESQL_USER }}:${{ secrets.POSTGRESQL_PASSWORD }}@db:${{ secrets.POSTGRESQL_PORT }}/${{ secrets.POSTGRESQL_DB }}
+          POSTGRESQL_URL: postgres://${{ secrets.POSTGRESQL_USER }}:${{ secrets.POSTGRESQL_PASSWORD }}@localhost:${{ secrets.POSTGRESQL_PORT }}/${{ secrets.POSTGRESQL_DB }}
           BCRYPT_SALT: ${{ secrets.BCRYPT_SALT }}
           JWT_SECRET_KEY: ${{ secrets.JWT_SECRET_KEY }}
           JWT_EXPIRATION: ${{ secrets.JWT_EXPIRATION }}
       - run: npm run seed 
         env: 
-          POSTGRESQL_URL: postgres://${{ secrets.POSTGRESQL_USER }}:${{ secrets.POSTGRESQL_PASSWORD }}@db:${{ secrets.POSTGRESQL_PORT }}/${{ secrets.POSTGRESQL_DB }}
+          POSTGRESQL_URL: postgres://${{ secrets.POSTGRESQL_USER }}:${{ secrets.POSTGRESQL_PASSWORD }}@localhost:${{ secrets.POSTGRESQL_PORT }}/${{ secrets.POSTGRESQL_DB }}
           BCRYPT_SALT: ${{ secrets.BCRYPT_SALT }}
       - run: npm run build --if-present
       - run: npm test
         env:
-          POSTGRESQL_URL: postgres://${{ secrets.POSTGRESQL_USER }}:${{ secrets.POSTGRESQL_PASSWORD }}@db:${{ secrets.POSTGRESQL_PORT }}/${{ secrets.POSTGRESQL_DB }}
+          POSTGRESQL_URL: postgres://${{ secrets.POSTGRESQL_USER }}:${{ secrets.POSTGRESQL_PASSWORD }}@localhost:${{ secrets.POSTGRESQL_PORT }}/${{ secrets.POSTGRESQL_DB }}
           BCRYPT_SALT: ${{ secrets.BCRYPT_SALT }}
 
   # Build-user-ui: 
