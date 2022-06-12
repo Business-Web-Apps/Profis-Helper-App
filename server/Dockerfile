@@ -14,7 +14,7 @@ ENV NPM_CONFIG_FUND=false
 WORKDIR /app
 
 # Copy files specifying dependencies
-COPY ./package*.json ./
+COPY ./package.json ./package-lock.json ./
 
 # Install dependencies
 RUN npm ci --loglevel=$NPM_LOG_LEVEL

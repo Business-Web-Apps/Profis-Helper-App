@@ -31,6 +31,5 @@ RUN npm run prisma:generate
 # Copy all the files
 COPY . .
 
-
 # Run server
-CMD [ "node", "run", "start:init:debug"]
+CMD [ "npm", "run", "start:debug"]

@@ -5,8 +5,7 @@
     "start": "nest start",
     "start:watch": "nest start --watch",
     "start:debug": "nest start --debug --watch",
-    "start:init": "npm run prisma:generate && npm run docker:db && npm run db:clean && npm run db:init && npm run start",
-    "start:init:debug": "npm run prisma:generate && npm run docker:db && npm run db:clean && npm run db:init && npm run start:debug",
+    "init": "npm run db:clean && npm run db:init",
     "build": "nest build",
     "test": "jest",
     "seed": "ts-node scripts/seed.ts",
@@ -14,9 +13,7 @@
     "db:migrate-up": "prisma migrate deploy",
     "db:clean": "ts-node scripts/clean.ts",
     "db:init": "run-s \"db:migrate-save -- --name 'initial version'\" db:migrate-up seed",
-    "prisma:generate": "prisma generate",
-    "docker:db": "docker-compose -f docker-compose.db.yml up -d",
-    "docker:build": "docker build ."
+    "prisma:generate": "prisma generate"
   },
   "dependencies": {
     "@nestjs/common": "8.2.3",

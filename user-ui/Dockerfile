@@ -13,7 +13,7 @@ ENV NPM_CONFIG_FUND=false
 WORKDIR /app
 
 # Copy files specifying dependencies
-COPY ./package*.json ./
+COPY ./package.json ./package-lock.json ./
 
 # Install dependencies
 RUN npm ci --loglevel=$NPM_LOG_LEVEL
@@ -26,5 +26,9 @@ RUN npm run build
 
 
 FROM nginx
+
+# Expose the port the server listens to
+EXPOSE 3002
+
 COPY ./nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build /usr/share/nginx/html

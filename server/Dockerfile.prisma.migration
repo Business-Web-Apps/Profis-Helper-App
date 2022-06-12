@@ -33,6 +33,5 @@ RUN npm run prisma:generate
 # Copy all the files
 COPY . .
 
-
 # Run server
-CMD [ "npm", "run", "db:init"]
+CMD [ "npm", "run", "init"]
